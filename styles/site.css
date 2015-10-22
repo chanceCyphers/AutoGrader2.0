@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+}
+
+#header {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #aacc55;
+}
+
+#header-top {
+    height: 47px;
+    background-color: #006633;
+
+}
+
+#header-bottom {
+    height: 20px;
+    background-color: #eaf1d1;
+    border-top: solid;
+    border-top-width: 3px;
+    border-top-color: black;
+}
+
+#content-wrapper {
+    width: 960px;
+    margin: auto;
+}
+
+#loginDiv {
+    width: 400px;
+    margin: auto;
+}
+
+#loginDiv h2 {
+    text-align: center;
+}
+
+#loginDiv p {
+    display: inline;
+}
+
+#loginDiv div {
+    margin: 5px;
+}
+
+#loginDiv div input {
+    float: right;
+}
