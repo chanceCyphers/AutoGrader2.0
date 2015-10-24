@@ -9,13 +9,17 @@ function call($controller, $action)
         case 'login':
             require_once('models/login_validator.php');
             $controller = new LoginController();
+            break;
+        case 'home':
+            $controller = new HomeController();
     }
 
     $controller->{$action}();
 }
 
 //eventually we will need to figure out one's allowed actions based on their role
-$allowedActions = array('login' => ['login', 'validateLogin']);
+$allowedActions = array('login' => ['login', 'validateLogin'],
+    'home' => ['index']);
 
 if (array_key_exists($controller, $allowedActions)) {
     if (in_array($action, $allowedActions[$controller])) {

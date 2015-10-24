@@ -12,7 +12,7 @@ class LoginController {
         $isValid = LoginValidator::validateLogin($email, $password);
 
         if ($isValid) {
-            require_once('views/login/success.php');
+            require_once('views/home/index.php');
         } else {
             require_once('views/login/failure.php');
         }
