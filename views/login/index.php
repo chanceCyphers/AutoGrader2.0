@@ -14,8 +14,8 @@
         </div>
 
         <div>
-            <a href=""> Register a New Account </a>
-            <a href=""> Forgot Password? </a>
+            <a href="views/register/index.php"> Register a New Account </a>
+            <a href="views/register/forgotpass.php"> Forgot Password? </a>
         </div>
     </form>
 </div>

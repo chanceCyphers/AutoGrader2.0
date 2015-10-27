@@ -12,6 +12,7 @@ function call($controller, $action)
             break;
         case 'home':
             $controller = new HomeController();
+            break;
     }
 
     $controller->{$action}();
@@ -19,7 +20,7 @@ function call($controller, $action)
 
 //eventually we will need to figure out one's allowed actions based on their role
 $allowedActions = array('login' => ['login', 'validateLogin'],
-    'home' => ['index']);
+                        'home' => ['index']);
 
 if (array_key_exists($controller, $allowedActions)) {
     if (in_array($action, $allowedActions[$controller])) {
