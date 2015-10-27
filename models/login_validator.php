@@ -7,7 +7,6 @@ class LoginValidator {
 
         $userQuery = $db->prepare('SELECT * FROM users WHERE email = :email AND pwd = :password');
         $userQuery->execute(array('email' => $email, 'password' => $password));
-
         $user = $userQuery->fetch();
 
         if (!$user) {
