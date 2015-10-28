@@ -13,6 +13,10 @@ function call($controller, $action)
         case 'home':
             $controller = new HomeController();
             break;
+        case 'reg':
+            require_once('models/reg_validator.php');
+            $controller = new RegController();
+            break;
     }
 
     $controller->{$action}();
@@ -21,7 +25,7 @@ function call($controller, $action)
 //eventually we will need to figure out one's allowed actions based on their role
 $allowedActions = array('login' => ['login', 'validateLogin'],
                         'home' => ['index'],
-                        'reg' => ['newUser', 'forgotPass']);
+                        'reg' => ['validateReg', 'forgotPass']);
 
 if (array_key_exists($controller, $allowedActions)) {
     if (in_array($action, $allowedActions[$controller])) {
