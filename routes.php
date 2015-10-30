@@ -13,10 +13,6 @@ function call($controller, $action)
         case 'home':
             $controller = new HomeController();
             break;
-        case 'reg':
-            require_once('models/reg_validator.php');
-            $controller = new RegController();
-            break;
     }
 
     $controller->{$action}();
