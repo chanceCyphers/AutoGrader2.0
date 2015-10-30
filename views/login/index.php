@@ -12,10 +12,5 @@
         <div>
             <input type="submit" value="submit">
         </div>
-
-        <div>
-            <a href="views/register/index.php"> Register a New Account </a>
-            <a href="views/register/forgotpass.php"> Forgot Password? </a>
-        </div>
     </form>
 </div>
