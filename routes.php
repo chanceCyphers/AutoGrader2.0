@@ -20,7 +20,8 @@ function call($controller, $action)
 
 //eventually we will need to figure out one's allowed actions based on their role
 $allowedActions = array('login' => ['login', 'validateLogin'],
-                        'home' => ['index']);
+                        'home' => ['index'],
+                        'reg' => ['newUser', 'forgotPass']);
 
 if (array_key_exists($controller, $allowedActions)) {
     if (in_array($action, $allowedActions[$controller])) {
