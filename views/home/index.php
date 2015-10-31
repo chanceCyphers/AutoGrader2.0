@@ -4,7 +4,5 @@
 <p> Questions </p>
 <p> Tests </p>
 <p> Admin </p>
-
-
-
+<p> View Account </p>
 </div>

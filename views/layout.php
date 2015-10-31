@@ -20,3 +20,16 @@
         </footer>
     <body>
 <html>
+
+<?php       # comments
+            # This is the main layout page, where the HTML is generated from, and what most
+            # of the CSS file applies its styling to. It requires routes.php, which accesses
+            # the controller and action variables from index.php and calls the appropriate
+            # controller for whatever the action was that took place.
+
+
+
+
+?>
+
+

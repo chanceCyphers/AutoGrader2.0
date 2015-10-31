@@ -12,10 +12,5 @@
         <div>
             <input type="submit" value="submit">
         </div>
-
-        <div>
-            <a href=""> Register a New Account </a>
-            <a href=""> Forgot Password? </a>
-        </div>
     </form>
 </div>
