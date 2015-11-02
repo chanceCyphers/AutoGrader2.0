@@ -1,6 +1,6 @@
 <div id="regDiv">
     <h2>Enter New Account Information</h2>
-    <form action="?controller=register&action=validateReg" method="post">
+    <form action="?controller=account&action=regNewUser" method="post">
         <div>
             <p>Desired Username:</p>
             <input type="text" name="username" size="30">

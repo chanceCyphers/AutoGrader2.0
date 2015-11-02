@@ -1,8 +1,12 @@
 <?php
 
 class AccountController {
-    public function regNewUser() {
+    public function newAccount() {
         require_once('views/account/register.php');
+    }
+
+    public function regNewUser() {
+
     }
 
     public function forgotPass() {

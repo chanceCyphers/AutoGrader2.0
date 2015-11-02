@@ -14,7 +14,7 @@
         </div>
 
         <div>
-            <a href="?controller=account&action=regNewUser"> Register a New Account </a>
+            <a href="?controller=account&action=newAccount"> Register a New Account </a>
             <a href="?controller=account&action=forgotPass"> Forgot Password? </a>
         </div>
     </form>
