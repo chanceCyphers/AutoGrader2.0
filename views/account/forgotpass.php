@@ -1,6 +1,6 @@
 <div id="forgotpassDiv">
     <h2>Account Retrieval</h2>
-    <form action="?controller=register&action=forgotPass" method="post">
+    <form action="?controller=account&action=forgotPass" method="post">
         <div>
             <p>Enter Username:</p>
             <input type="text" name="username" size="30">

@@ -14,8 +14,8 @@
         </div>
 
         <div>
-            <a href="?controller=reg&action=newUser"> Register a New Account </a>
-            <a href="views/register/forgotpass.php"> Forgot Password? </a>
+            <a href="?controller=account&action=regNewUser"> Register a New Account </a>
+            <a href="?controller=account&action=forgotPass"> Forgot Password? </a>
         </div>
     </form>
 </div>
