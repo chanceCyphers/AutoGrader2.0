@@ -13,6 +13,9 @@ function call($controller, $action)
         case 'home':
             $controller = new HomeController();
             break;
+        case 'reg':
+            $controller = new RegController();
+            break;
     }
 
     $controller->{$action}();
