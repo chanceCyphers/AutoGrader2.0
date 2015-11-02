@@ -12,10 +12,13 @@
         <div>
             <input type="submit" value="submit">
         </div>
+<<<<<<< HEAD
 
         <div>
             <a href="?controller=account&action=newAccount"> Register a New Account </a>
             <a href="?controller=account&action=forgotPass"> Forgot Password? </a>
         </div>
+=======
+>>>>>>> origin/Registration
     </form>
 </div>

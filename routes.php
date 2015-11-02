@@ -37,3 +37,10 @@ if (array_key_exists($controller, $allowedActions)) {
 }
 
 ?>
+
+
+<?php       # comments
+            # This is the page that calls the controllers and actions that those controllers take.
+            # Controllers are responsible for getting information from the user, and the models, and
+            # changing the view based the action taken by the user.
+?>
