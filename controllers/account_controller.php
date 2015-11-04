@@ -34,7 +34,17 @@ class AccountController {
 
     # Lands user on the account information page
     public function viewInfo() {
-        require_once('views/account/account_info.php');
+        $username = $_SESSION['username'];
+
+        # Retrieve the user's information
+        $userProfile = AccountManager::viewInfo($username);
+        # If the user exists, display the information through the view
+        if (isset($userProfile)) {
+            require_once('views/account/account_info.php');
+        } else {
+            # User not found error
+        }
+        
 
     }
 

@@ -4,7 +4,8 @@
 	<p> Questions </p>
 	<p> Tests </p>
 	<p> Admin </p>
-	<a href="?controller=account&action=viewInfo"> View Account </a>
+	<p> <a href="?controller=account&action=viewInfo"> View Account </a> </p>
+	<p> <a href="?controller=login&action=login"> Log Out </a> </p>
 
 
 </div>
