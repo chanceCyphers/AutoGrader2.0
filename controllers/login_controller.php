@@ -12,6 +12,8 @@ class LoginController {
         $isValid = LoginValidator::validateLogin($email, $password);
 
         if ($isValid) {
+            session_start();
+            $_SESSION['username'] = $username;
             require_once('views/home/index.php');
         } else {
             require_once('views/login/failure.php');

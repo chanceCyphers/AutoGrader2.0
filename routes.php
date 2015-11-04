@@ -14,6 +14,7 @@ function call($controller, $action)
             $controller = new HomeController();
             break;
         case 'account':
+            require_once('models/account_manager.php');
             $controller = new AccountController();
             break;
     }
