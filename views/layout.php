@@ -12,7 +12,11 @@
             <div id="header-bottom">
             </div>
         </div>
+        
+        
         <div id="content-wrapper">
+        	<?php require_once('navBar.php'); ?>
+            
             <?php require_once('routes.php'); ?>
         </div>
 
