@@ -12,6 +12,11 @@ function call($controller, $action)
             break;
         case 'home':
             $controller = new HomeController();
+            break;
+        case 'account':
+            require_once('models/account_manager.php');
+            $controller = new AccountController();
+            break;
     }
 
     $controller->{$action}();
@@ -19,7 +24,8 @@ function call($controller, $action)
 
 //eventually we will need to figure out one's allowed actions based on their role
 $allowedActions = array('login' => ['login', 'validateLogin'],
-    'home' => ['index']);
+                        'home' => ['index'],
+                        'account' => ['newAccount', 'regNewUser', 'forgotPass', 'viewInfo', 'changeInfo']);
 
 if (array_key_exists($controller, $allowedActions)) {
     if (in_array($action, $allowedActions[$controller])) {
@@ -31,4 +37,11 @@ if (array_key_exists($controller, $allowedActions)) {
     call('pages', 'error');
 }
 
+?>
+
+
+<?php       # comments
+            # This is the page that calls the controllers and actions that those controllers take.
+            # Controllers are responsible for getting information from the user, and the models, and
+            # changing the view based the action taken by the user.
 ?>

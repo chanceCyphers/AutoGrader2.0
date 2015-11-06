@@ -11,7 +11,10 @@ class LoginController {
 
         $isValid = LoginValidator::validateLogin($email, $password);
 
+        $username = $isValid['username'];
+
         if ($isValid) {
+            # Show home/landing page view
             require_once('views/home/index.php');
         } else {
             require_once('views/login/failure.php');
