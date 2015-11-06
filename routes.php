@@ -7,7 +7,6 @@ function call($controller, $action)
 
     switch ($controller) {
         case 'login':
-            require_once('models/login_validator.php');
             $controller = new LoginController();
             break;
         case 'home':
