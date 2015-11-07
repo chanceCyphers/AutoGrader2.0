@@ -28,7 +28,7 @@ function call($controller, $action)
 $allowedActions = array('login' => ['login', 'validateLogin'],
                         'home' => ['index'],
                         'account' => ['newAccount', 'regNewUser', 'forgotPass', 'viewInfo', 'changeInfo'],
-                        'questions' => ['index']);
+                        'questions' => ['index', 'create', 'createTrueFalse', 'viewQuestion']);
 
 if (array_key_exists($controller, $allowedActions)) {
     if (in_array($action, $allowedActions[$controller])) {
