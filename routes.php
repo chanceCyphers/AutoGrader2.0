@@ -16,6 +16,10 @@ function call($controller, $action)
             require_once('models/account_manager.php');
             $controller = new AccountController();
             break;
+        case 'category':
+            require_once("models/category_manager.php");
+            $controller = new CategoryController();
+            break;
         case 'questions':
         	$controller = new QuestionsController();
         	break;
@@ -28,6 +32,7 @@ function call($controller, $action)
 $allowedActions = array('login' => ['login', 'validateLogin'],
                         'home' => ['index'],
                         'account' => ['newAccount', 'regNewUser', 'forgotPass', 'viewInfo', 'changeInfo'],
+                        'category' => ['index', 'create', 'delete', 'change'],
                         'questions' => ['index', 'create', 'createTrueFalse', 'viewQuestion']);
 
 if (array_key_exists($controller, $allowedActions)) {
