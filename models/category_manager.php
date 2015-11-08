@@ -14,6 +14,11 @@
 			return $categoryList;
 		}
 
+		public static function create($description, $parent) {
+			$db = Db::getInstance();			
+
+		}
+
 
 
 	}

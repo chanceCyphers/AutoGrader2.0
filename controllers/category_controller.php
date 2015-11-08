@@ -11,7 +11,12 @@ Class CategoryController {
 	# Create a new category
 	function create() {
 		require_once("views/categories/create.php");
-
+		if(isset($_POST)) {
+			$description = $_POST['description'];
+			$parent = $_POST['parent'];
+			$success = CategoryManager::create($description, $parent);
+			
+		}
 	}
 
 	# Delete a category
