@@ -34,10 +34,10 @@ if (array_key_exists($controller, $allowedActions)) {
     if (in_array($action, $allowedActions[$controller])) {
         call($controller, $action);
     } else {
-        call('pages', 'error');
+        call('error', 'accessDenied');
     }
 } else {
-    call('pages', 'error');
+    call('error', 'pageNotFound');
 }
 
 ?>
