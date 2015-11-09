@@ -6,15 +6,15 @@
 			$db = Db::getInstance();
 			$origin = "1";
 
-			$categoryQuery = $db->prepare("SELECT * FROM categories");
+			$categoryQuery = $db->prepare("SELECT description FROM categories");
 			$categoryQuery->execute();
 
-			$categoryList = $categoryQuery->fetch(PDO::FETCH_ASSOC);
+			$categoryList = $categoryQuery->fetchAll(PDO::FETCH_ASSOC);
 
 			return $categoryList;
 		}
 
-		public static function create($description, $parent) {
+		public static function create() {
 			$db = Db::getInstance();			
 
 		}

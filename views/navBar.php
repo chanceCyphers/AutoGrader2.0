@@ -1,5 +1,4 @@
-<ul id="navBar">
-	
+<ul id="navBar">	
 	<li><a href="?controller=home">Home</a></li>
 	<li><a href="?controller=category&action=index">Categories</a></li>
 	<li><a href="?controller=questions">Questions</a></li>

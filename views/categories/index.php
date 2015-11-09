@@ -1,7 +1,11 @@
 <div id="categoryDiv">
 	<h2> Categories </h2>
 	<?php
-		echo $categories['description']
+		foreach($categories as $array => $keys) {
+			foreach ($keys as $key => $value) {
+				echo $value . "<br />";
+			}
+		}
 	?>	
 
 		<div>
