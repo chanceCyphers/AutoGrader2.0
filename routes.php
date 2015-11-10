@@ -29,7 +29,7 @@ function call($controller, $action)
 }
 
 //eventually we will need to figure out one's allowed actions based on their role
-$allowedActions = array('login' => ['login', 'validateLogin'],
+$allowedActions = array('login' => ['login', 'validateLogin', 'logout'],
                         'home' => ['index'],
                         'account' => ['newAccount', 'regNewUser', 'forgotPass', 'viewInfo', 'changeInfo'],
                         'category' => ['index', 'create', 'delete', 'change'],

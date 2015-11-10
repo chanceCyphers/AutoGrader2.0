@@ -22,6 +22,10 @@ class LoginController {
             require_once('views/login/failure.php');
         }
     }
+
+    public function logout() {
+        
+    }
 }
 
 ?>

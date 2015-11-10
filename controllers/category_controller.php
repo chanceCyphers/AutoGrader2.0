@@ -14,7 +14,7 @@ Class CategoryController {
 		if(isset($_POST)) {
 			$description = $_POST['description'];
 			$parent = $_POST['parent'];
-			$success = CategoryManager::create($description, $parent);
+			$success = CategoryManager::create();
 			
 		}
 	}

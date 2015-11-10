@@ -1,21 +1,35 @@
-<?php $_SESSION['username'] = ""; ?>
 <div id="loginDiv">
     <h2>Enter Login Information</h2>
     <form action="?controller=login&action=validateLogin" method="post">
-        <div>
-            <p>MyEmich Email Address</p>
-            <input type="text" name="email" size="30">
-        </div>
-        <div>
-            <p>Password</p>
-            <input type="password" name="password" size="30">
-        </div>
-        <div>
-            <input type="submit" value="Login">
-        </div>
-        <div>
-            <a href="?controller=account&action=newAccount"> Register a New Account </a> <br />
-            <a href="?controller=account&action=forgotPass"> Forgot Password? </a>
-        </div>
+        <table>
+		  <tr id="login_tr1">
+		    <td>
+				<strong><p>Email Address:</p></strong>
+			</td>
+			<td>
+				<input type="text" name="email" size="30">
+			</td>
+		  <tr id="login_tr2">
+			<td>
+				<strong><p>Password:</p></strong>
+			</td>
+			<td>
+				<input type="password" name="password" size="30">
+			</td>
+		  </tr>
+		  <tr id="login_tr3">
+			<td>
+				<input id = "login_button"type="submit" value="Login">
+			</td>
+		  </tr>
+		  <tr id="login_tr4">
+			<td>
+				<a href="?controller=account&action=newAccount" class="login_regAndFrgtpswd"> Register</a>
+			</td>
+			<td>
+				<a href="?controller=account&action=forgotPass" class="login_regAndFrgtpswd"> Forgot Password? </a>
+			</td>
+		  </tr>
+		</table>
     </form>
 </div>
