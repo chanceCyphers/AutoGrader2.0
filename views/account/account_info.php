@@ -3,12 +3,19 @@
 	# or email address.
 	
 	echo "<br />";
-
-	echo "Username: " . $userProfile['username'] . "<br />";
-	echo "Email: " . $userProfile['email'] . "<br />";
-	echo "Group ID: " . $userProfile['group_id'] . "<br />";
-	echo "Permissions Level: " . $userProfile['perm_id'] . "<br />";
-
+	echo "<div id=accountInfoDiv>";
+	echo "<h2> Account Information </h2>";
+	echo "<div id=accountInfoDivUser>";
+	echo "<b> Username: </b> " . $userProfile['username'] . "<br />";
+	echo "<b> Email: </b>" . $userProfile['email'] . "<br />";
+	echo "<b> Groups: </b>" . $userProfile['group_des'] . "<br />";
+	echo "<b> Permissions Level: </b>" . $userProfile['perm_des'] . "<br />";
+	echo "<br />";
+	echo "<a href='?controller=account&action=changeInfo'> Change Account Information </a> <br />";
+	echo "<p> Notifications </p>";
+	echo "<hr />";
+	echo "</div>";
+	echo "</div>";
 
 ?>
 

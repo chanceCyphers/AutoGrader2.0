@@ -42,7 +42,11 @@ class AccountManager {
 	public static function viewInfo($username) {
 		$db = Db::getInstance();
 
-		$accountQuery = $db->prepare('SELECT * FROM users WHERE username = :username');
+		$accountQuery = $db->prepare('SELECT users.username, users.email, groups.group_des, permissions.perm_des 
+									  FROM users, groups, permissions 
+									  WHERE users.username = :username AND
+									  users.group_id = groups.group_id AND
+									  users.perm_id = permissions.perm_id');		
 		$accountQuery->execute(array('username' => $username));
 		$userInfo = $accountQuery->fetch(PDO::FETCH_ASSOC);
 
