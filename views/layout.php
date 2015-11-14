@@ -12,10 +12,29 @@
             <div id="header-bottom">
             </div>
         </div>
+
+        <div id="navigation-wrapper">
+            <?php 
+                # Only show the navigation bar appropriate for the user based on permissions
+                if (isset($_SESSION['username']) && array_key_exists("username", $_SESSION)) {
+                    if ($_SESSION['role'] == 1) {
+                        require_once("admin_nav.php");
+                    } else if ($_SESSION['role'] == 2) {
+                        require_once("prof_nav.php");
+                    } else if ($_SESSION['role'] == 3) {
+                        require_once("student_nav.php");
+                    } else {
+                        require_once("guest_nav.php");
+                    }
+                }
+                # For some reason, the navigation does not show right away unless refreshed.              
+            ?>
+
+        </div>
         
         
         <div id="content-wrapper">
-        	<?php require_once('navBar.php'); ?>                
+        	              
             
             <?php require_once('routes.php'); ?>
         </div>
@@ -24,16 +43,3 @@
         </footer>
     <body>
 <html>
-
-<?php       # comments
-            # This is the main layout page, where the HTML is generated from, and what most
-            # of the CSS file applies its styling to. It requires routes.php, which accesses
-            # the controller and action variables from index.php and calls the appropriate
-            # controller for whatever the action was that took place.
-
-
-
-
-?>
-
-
