@@ -14,7 +14,7 @@
 		}
 
 		public static function create($new_category, $parent) {
-			$db = Db::getInstance();
+			$db = Db::getInstance();			
 
 			# Find the parent first
 			$findParent = $db->prepare('SELECT description, location FROM categories
@@ -22,35 +22,62 @@
 			$findParent->execute(array('parent' => $parent));
 			$parentExists = $findParent->fetch(PDO::FETCH_ASSOC);
 
-			# If the parent exists, get its location, and modify it to set the new categories
-			# location in the hierarchy
 			if ($parentExists) {
+				# Create data for table insertion
 				$owner = $_SESSION['username'];
 				$location = $parentExists['location'];
 				$date_stamp = date('Y-m-d H:i:s');
-				# Split up the location
-				$locationArray = explode(".", $location);
-				# Get the end value of the parent's location and increment it by 1
-				$lastIndex = count($locationArray) - 1;
-				$locationArray[$lastIndex] = $locationArray[$lastIndex] + 1;
-				# Reassemble the new location for the new category
-				$new_cat_location = "";
-				for ($i = 0; $i < count($locationArray); $i++) {
-					$new_cat_location .= $locationArray[$i] . ".";
-				}
-				# Since this new category can be a parent, add an opening at the end.
-				$new_cat_location .= "0";
 
-				$createCategory = $db->prepare('INSERT INTO categories (location, description, owner, datetime)
-											   VALUES (:new_cat_location, :new_category, :owner, :date_stamp)');
-				$createCategory->execute(array('new_cat_location' => $new_cat_location, 'new_category' => $new_category,
-											   'owner' => $owner, 'date_stamp' => $date_stamp));
+				# SPECIAL CASE #1 - Creating another top level category *NOT IMPLEMENTED*
+
+				# SPECIAL CASE #2 - Creating category after top level (i.e. Computer Science)
+				if($parentExists['description'] == "Computer Science") {
+					# Get all of the children under the parent
+					$reg = "^1.[0-9]+$"; 
+					$findChildren = $db->prepare('SELECT location FROM categories 
+												  WHERE location REGEXP :reg');
+					$findChildren->execute(array('reg' => $reg));
+					$children = $findChildren->fetchAll(PDO::FETCH_ASSOC);
+
+					# Count the number of childen found
+					$childrenCount = count($children);
+					# Affix the location for the new category
+					$childrenCount++;
+					$location = $parentExists['location'] . "." . $childrenCount;
+					# Insert the category into the table
+					$createCategory = $db->prepare('INSERT INTO categories (location, description, owner, datetime)
+												   VALUES (:location, :new_category, :owner, :date_stamp)');
+					$createCategory->execute(array('location' => $location, 'new_category' => $new_category,
+												   'owner' => $owner, 'date_stamp' => $date_stamp));
+				} else {
+					$parentLocation = $parentExists['location'];
+					$parentLocation .= "%";
+
+					# Get all of the children under the parent 
+					$findChildren = $db->prepare('SELECT location FROM categories WHERE location LIKE :parentLocation');
+					$findChildren->execute(array('parentLocation' => $parentLocation));
+					$children = $findChildren->fetchAll(PDO::FETCH_ASSOC);
+
+					# Count the number of childen found
+					$childrenCount = count($children);
+
+					$location = $parentExists['location'] . "." . $childrenCount;
+
+					$createCategory = $db->prepare('INSERT INTO categories (location, description, owner, datetime)
+												   VALUES (:location, :new_category, :owner, :date_stamp)');
+					$createCategory->execute(array('location' => $location, 'new_category' => $new_category,
+												   'owner' => $owner, 'date_stamp' => $date_stamp));
+				}
 			} else {
 				echo "Category already exists!" . "<br />";
 			}
 
 
 
+		}
+
+		public static function delete($category, $parent) {
+			
 		}
 
 
