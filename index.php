@@ -1,5 +1,12 @@
 <?php
-session_start();
+
+# If there is a user setup in the session when reaching the page, then destroy it
+if (isset($_SESSION["username"]) && array_key_exists("username", $_SESSION)) {
+	session_destroy();
+} else {
+	session_start();
+}
+
 require_once('connection.php');
 
 if (isset($_GET['controller'])) {
@@ -16,18 +23,5 @@ if (isset($_GET['controller'])) {
 }
 
 require_once('views/layout.php');
-
-?>
-
-<?php 	#comments
-		# Everything starts here. The file is loaded and $controller and $action are set to 
-		# their defaults, which is 'login'. It then requires the layout.php file once to
-		# load the HTML for the page. 
-
-		# This page is the "gateway" to the application. Even though many different files
-		# get loaded, this is the only page that the users will see. As such, the $_GET
-		# global will continually be updated as forms and other sumbissions are activated
-
-
 
 ?>

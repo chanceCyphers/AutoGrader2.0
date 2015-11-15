@@ -12,10 +12,9 @@ Class CategoryController {
 	function create() {
 		require_once("views/categories/create.php");
 		if(isset($_POST)) {
-			$description = $_POST['description'];
-			$parent = $_POST['parent'];
-			$success = CategoryManager::create();
-			
+			$name = $_POST['cat_name'];
+			$parent = $_POST['cat_parent'];
+			$success = CategoryManager::create($name, $parent);			
 		}
 	}
 

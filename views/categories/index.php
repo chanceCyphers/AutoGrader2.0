@@ -8,12 +8,15 @@
 		}
 	?>	
 
-		<div>
-			<p> <a href="?controller=category&action=create"> Create Category </a> </p>
-			<p> <a href="?controller=category&action=delete"> Delete Category </a> </p>
-			<p> <a href="?controller=category&action=change"> Change Category </a> </p>
-		</div>
-		<div>
+	<div>
+	<h2>Create New Category</h2>
+    	<form action="?controller=category&action=create" method="post">    
+            Category Name: <input type="text" name="cat_name" size="30">
+            Create Category as Child of: <input type="text" name="cat_parent" size="30" placeholder="Parent Category">
+            <input type="submit" value="Create">
+    	</form>
+	</div>
 
-		</div>
+
+
 </div>
