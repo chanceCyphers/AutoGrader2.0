@@ -6,7 +6,9 @@
 		<input type="radio" name="questionType" value="trueFalse">True/False
 		<br/>
 		<input type="radio" name="questionType" value="multipleChoice">Multiple Choice
-		<br/> 
+		<br/>
+		<input type="radio" name="questionType" value="shortAnswer">Short Answer
+		<br/>  
 		<input type="submit" value="submit">
 	</form>
 	
