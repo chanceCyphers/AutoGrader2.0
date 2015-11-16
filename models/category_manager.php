@@ -22,12 +22,14 @@
 			$findParent->execute(array('parent' => $parent));
 			$parentExists = $findParent->fetch(PDO::FETCH_ASSOC);
 
+			#### THIS CAN BE EXTRACTED TO HELPER FUNCTION (DRY)
 			# Find out if the one to be created under the parent already exists
 			$parentLocation = $parentExists['location'];
 			$parentLocation .= "%";
 			$findDuplicate = $db->prepare('SELECT description FROM categories WHERE location LIKE :parentLocation');
 			$findDuplicate->execute(array('parentLocation' => $parentLocation));
-
+	
+			# Search for a duplicate of the category
 			while ($row = $findDuplicate->fetch(PDO::FETCH_ASSOC)) {
 				if ($row['description'] == $new_category) {
 					echo "That category already exists under this parent!";
@@ -35,6 +37,7 @@
 					return;
 				}
 			}
+			####
 
 			# Reaching this point means that the category can be created as new under this parent.
 			if ($parentExists) {
@@ -93,6 +96,10 @@
 
 		public static function delete($category, $parent) {
 
+		}
+
+		public static function edit() {
+			
 		}
 
 
