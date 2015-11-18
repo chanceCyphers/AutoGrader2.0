@@ -6,6 +6,8 @@ class LoginController {
     }
 
     public function validateLogin() {
+        require_once('models/login_validator.php');
+        
         $email = $_POST['email'];
         $password = $_POST['password'];
 
@@ -19,6 +21,10 @@ class LoginController {
         } else {
             require_once('views/login/failure.php');
         }
+    }
+
+    public function logout() {
+        
     }
 }
 
