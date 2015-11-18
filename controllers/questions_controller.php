@@ -19,15 +19,25 @@ class QuestionsController {
     }
     
     public function create() {
-    	$questionType = $_POST['questionType'];
+        # Get the list of all valid categories       
+        require_once('models/createQuestionDbCommunicator.php');
+        $categories = CreateQuestionDbCommunicator::getCategories();
 
-		if (!isset($questionType)) {
+		if (!isset($_POST['questionType'])) {
         	require_once('views/questions/create.php');
-		} else if ($questionType == "trueFalse") {
+		} else if ($_POST['questionType'] == "trueFalse") {
 			require_once('views/questions/createTrueFalse.php');
-		} else if ($questionType == "multipleChoice") {
+		} else if ($_POST['questionType'] == "multipleChoice") {
 			require_once('views/questions/createMultipleChoice.php');
-		}
+		} else if ($_POST['questionType'] == "shortAnswer") {
+            require_once('views/questions/create_shortans.php');
+        } else if ($_POST['questionType'] == "essay") {
+            require_once('views/questions/create_essay.php');
+        } else if ($_POST['questionType'] == "dynamic") {
+            # View needs to be created and included
+        } else if ($_POST['questionType'] == "coding") {
+            # View needs to be created and included
+        }
     }
     
     public function createTrueFalse() {
@@ -40,6 +50,10 @@ class QuestionsController {
 		CreateQuestionDbCommunicator::createTrueFalseQuestion($title, $question, $answer);
 
 		require_once('views/questions/createSuccess.php');
+    }
+
+    public function create_shortans() {
+
     }   
 }
 
