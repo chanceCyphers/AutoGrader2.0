@@ -5,5 +5,5 @@
 	<li><a href="?controller=tests">Tests</a></li>
 	<li><a href="?controller=admin">Admin</a></li>
 	<li><a href="?controller=account&action=viewInfo">View Account</a></li>
-	<li><a href="?controller=login&action=login">Log Out</a></li>
+	<li><a href="?controller=login&action=logout">Log Out</a></li>
 </ul>

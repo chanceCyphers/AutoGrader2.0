@@ -54,9 +54,11 @@ class QuestionsController {
         # If privacy is set to limited, get the usernames that are permitted.
         if ($visible == 3) {
             $permitted = $_POST['permitted'];
+        } else {
+            $permitted = "";
         }
 
-		CreateQuestionDbCommunicator::createTrueFalseQuestion($title, $question, $answer);
+		CreateQuestionDbCommunicator::createTrueFalseQuestion($type, $title, $question, $answer, $owner, $cat_id, $visible, $permitted);
 
 		require_once('views/questions/createSuccess.php');
     }
