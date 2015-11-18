@@ -17,6 +17,7 @@
 						echo '<option value="'. $value . '">' . $value . '</option>';
 					}
 				}
+				
 			?>
 		</select>
 		<br/>

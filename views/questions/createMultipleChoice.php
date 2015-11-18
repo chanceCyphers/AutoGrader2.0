@@ -16,10 +16,9 @@
 		Choose Category:	
 		<select name="category">
 			<?php
-
 				foreach($categories as $array => $keys) {
 					foreach ($keys as $key => $value) {
-						echo '<option value="category">' . $value . '</option>';
+						echo '<option value="'. $value . '">' . $value . '</option>';
 					}
 				}
 			?>
