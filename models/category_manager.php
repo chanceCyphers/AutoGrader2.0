@@ -22,6 +22,24 @@
 			$findParent->execute(array('parent' => $parent));
 			$parentExists = $findParent->fetch(PDO::FETCH_ASSOC);
 
+			#### THIS CAN BE EXTRACTED TO HELPER FUNCTION (DRY)
+			# Find out if the one to be created under the parent already exists
+			$parentLocation = $parentExists['location'];
+			$parentLocation .= "%";
+			$findDuplicate = $db->prepare('SELECT description FROM categories WHERE location LIKE :parentLocation');
+			$findDuplicate->execute(array('parentLocation' => $parentLocation));
+	
+			# Search for a duplicate of the category
+			while ($row = $findDuplicate->fetch(PDO::FETCH_ASSOC)) {
+				if ($row['description'] == $new_category) {
+					echo "That category already exists under this parent!";
+					$duplicateFound = true;
+					return;
+				}
+			}
+			####
+
+			# Reaching this point means that the category can be created as new under this parent.
 			if ($parentExists) {
 				# Create data for table insertion
 				$owner = $_SESSION['username'];
@@ -32,7 +50,7 @@
 
 				# SPECIAL CASE #2 - Creating category after top level (i.e. Computer Science)
 				if($parentExists['description'] == "Computer Science") {
-					# Get all of the children under the parent
+					# Find the number of categories that already exist
 					$reg = "^1.[0-9]+$"; 
 					$findChildren = $db->prepare('SELECT location FROM categories 
 												  WHERE location REGEXP :reg');
@@ -69,7 +87,7 @@
 												   'owner' => $owner, 'date_stamp' => $date_stamp));
 				}
 			} else {
-				echo "Category already exists!" . "<br />";
+				echo "Parent does not exist!" . "<br />";
 			}
 
 
@@ -77,6 +95,10 @@
 		}
 
 		public static function delete($category, $parent) {
+
+		}
+
+		public static function edit() {
 			
 		}
 

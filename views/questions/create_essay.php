@@ -1,18 +1,10 @@
-<div class="createQuestionMultipleChoicePage">
+<div class="createQuestionEssayPage">
 	
-	<form action="?controller=questions&action=createMultipleChoice" method="post">
+	<form action="?controller=questions&action=create_essay" method="post">
 		Give the question a title: <br />
 		<input type="text" name="title"> <br />
 		The question:<br/>
-		<input type="text" name="question"><br />
-		Choice 1:<br/>
-		<input type="text" name="choice_1"><br />
-		Choice 2:<br/>
-		<input type="text" name="choice_2"><br />
-		Choice 3:<br/>
-		<input type="text" name="choice_3"><br />
-		Answer: <input type="text" name="answer"> <br />
-		<br/>		
+		<input type="text" name="question" size="60"><br />
 		Choose Category:	
 		<select name="category">
 			<?php
@@ -33,6 +25,5 @@
 		<input type="text" name="permitted"> <br/>
 		<input type="submit" value="Create">		
 	</form>
-	* When a Multiple choice question is selected in a test, the choices will
-		be randomly ordered *
+	
 </div>
