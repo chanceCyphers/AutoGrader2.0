@@ -33,7 +33,8 @@ $allowedActions = array('login' => ['login', 'validateLogin', 'logout'],
                         'home' => ['index'],
                         'account' => ['newAccount', 'regNewUser', 'forgotPass', 'viewInfo', 'changeInfo'],
                         'category' => ['index', 'create', 'delete', 'change'],
-                        'questions' => ['index', 'create', 'createTrueFalse', 'viewQuestion']);
+                        'questions' => ['index', 'create', 'createTrueFalse', 'createShortAnswer', 
+                                        'createMultipleChoice', 'createEssay', 'viewQuestion']);
 
 if (array_key_exists($controller, $allowedActions)) {
     if (in_array($action, $allowedActions[$controller])) {
