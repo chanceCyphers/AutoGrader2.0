@@ -43,11 +43,22 @@ class QuestionsController {
     public function createTrueFalse() {
 		require_once('models/createQuestionDbCommunicator.php');
     	
+        $type = 1; #TRUE/FALSE
     	$title = $_POST['title'];
 		$question = $_POST['question'];
 		$answer = $_POST['answer'];
-		
-		CreateQuestionDbCommunicator::createTrueFalseQuestion($title, $question, $answer);
+        $owner = $_SESSION['username'];
+        # Get the id of the category by it's name
+		$cat_id = CreateQuestionDbCommunicator::getCategoryId($_POST['category']);
+        $visible = $_POST['visible'];
+        # If privacy is set to limited, get the usernames that are permitted.
+        if ($visible == 3) {
+            $permitted = $_POST['permitted'];
+        } else {
+            $permitted = "";
+        }
+
+		CreateQuestionDbCommunicator::createTrueFalseQuestion($type, $title, $question, $answer, $owner, $cat_id, $visible, $permitted);
 
 		require_once('views/questions/createSuccess.php');
     }
