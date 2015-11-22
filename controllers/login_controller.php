@@ -30,7 +30,6 @@ class LoginController {
         echo "You have been logged out.";
         # Redirect to homepage on logout
         echo "<script> window.location.assign('index.php') </script>";
-        echo "<script> alert('You have been logged out') </script>";
     }
 }
 
