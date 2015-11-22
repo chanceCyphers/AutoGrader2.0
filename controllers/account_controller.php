@@ -50,17 +50,28 @@ class AccountController {
     public function changeInfo() {
         $username = $_SESSION['username'];
 
-        if (isset($_POST)) {
+        if (isset($_POST['new_email']) || isset($_POST['password'])) {
             if (array_key_exists('new_email', $_POST)) {
                 $new_email = $_POST['new_email'];
                 AccountManager::changeEmail($username, $new_email);
-
+                echo "EMAIL CHANGE SUCCESSFUL";
             }
 
             if (array_key_exists('password', $_POST) &&
                 array_key_exists('new_pass', $_POST) &&
                 array_key_exists('new_pass_check', $_POST)) {
 
+                $password = $_POST['password'];
+                $new = $_POST['new_pass'];
+                $checked = $_POST['new_pass_check'];
+
+                $valid = AccountManager::validatePassword($username, $password);
+                if ($valid && ($new == $checked)) {
+                    AccountManager::changePassword($username, $checked);
+                    echo "PASSWORD CHANGE SUCCESSFUL";
+                } else {
+                    echo "ERROR - PASSWORD NOT CHANGED";
+                }
             }
         } else {    
             # Retrieve the user's information
