@@ -52,6 +52,15 @@ class AccountManager {
 
 		return $userInfo;
 	}
+
+	public static function changeEmail($username, $new_email) {
+		$db = Db::getInstance();
+
+		$changeQuery = $db->prepare('UPDATE users SET email = :new_email WHERE username = :username');
+		$changeQuery->execute('new_email' => $new_email, 'username' => $username);
+
+		return true;
+	}
 }
 
 

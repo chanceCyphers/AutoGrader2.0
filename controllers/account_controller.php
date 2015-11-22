@@ -44,13 +44,34 @@ class AccountController {
         } else {
             # User not found error
         }
-        
-
     }
 
     # Allows user to change password and contact email
     public function changeInfo() {
+        $username = $_SESSION['username'];
 
+        if (isset($_POST)) {
+            if (array_key_exists('new_email', $_POST)) {
+                $new_email = $_POST['new_email'];
+                AccountManager::changeEmail($username, $new_email);
+
+            }
+
+            if (array_key_exists('password', $_POST) &&
+                array_key_exists('new_pass', $_POST) &&
+                array_key_exists('new_pass_check', $_POST)) {
+
+            }
+        } else {    
+            # Retrieve the user's information
+            $userProfile = AccountManager::viewInfo($username);
+            # If the user exists, display the information through the view
+            if (isset($userProfile)) {
+                require_once('views/account/change_info.php');
+            } else {
+                # User not found error
+            }
+        }
     }
 
     
