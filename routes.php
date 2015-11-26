@@ -23,6 +23,10 @@ function call($controller, $action)
         case 'questions':
         	$controller = new QuestionsController();
         	break;
+        case 'admin':
+            require_once("models/admin_manager.php");
+            $controller = new AdminController();
+            break;
     }
 
     $controller->{$action}();
@@ -34,7 +38,8 @@ $allowedActions = array('login' => ['login', 'validateLogin', 'logout'],
                         'account' => ['newAccount', 'regNewUser', 'forgotPass', 'viewInfo', 'changeInfo'],
                         'category' => ['index', 'create', 'delete', 'change'],
                         'questions' => ['index', 'create', 'createTrueFalse', 'createShortAnswer', 
-                                        'createMultipleChoice', 'createEssay', 'viewQuestion']);
+                                        'createMultipleChoice', 'createEssay', 'viewQuestion'],
+                        'admin' => ['index', 'changeInfo']);
 
 if (array_key_exists($controller, $allowedActions)) {
     if (in_array($action, $allowedActions[$controller])) {
