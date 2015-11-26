@@ -16,14 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Current Database: `autograderdb`
---
-
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `autograderdb` /*!40100 DEFAULT CHARACTER SET latin1 */;
-
-USE `autograderdb`;
-
---
 -- Table structure for table `categories`
 --
 
@@ -37,7 +29,7 @@ CREATE TABLE `categories` (
   `owner` varchar(50) NOT NULL,
   `datetime` timestamp NOT NULL,
   PRIMARY KEY (`cat_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=116 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,6 +38,7 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+INSERT INTO `categories` VALUES (1,'1','Computer Science','aikeji','2015-11-15 17:45:16'),(2,'1.1','Java','aikeji','2015-11-15 17:45:52'),(3,'1.1.1','Enums','aikeji','2015-11-15 17:46:20'),(4,'1.2','PHP','aikeji','2015-11-15 17:46:51'),(5,'1.2.1','PHPUnit','aikeji','2015-11-15 17:47:10'),(6,'1.3','C++','aikeji','2015-11-15 17:47:36'),(21,'1.1.3','Interfaces','developer','2015-11-15 19:23:38'),(22,'1.2.2','Classes','developer','2015-11-15 19:24:00'),(24,'1.2.1.1','Testing','developer','2015-11-15 20:19:29'),(108,'1.4','BASIC','developer','2015-11-16 15:56:15');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -57,10 +50,10 @@ DROP TABLE IF EXISTS `groups`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `groups` (
-  `group_id` int(6) unsigned NOT NULL AUTO_INCREMENT,
-  `description` varchar(30) NOT NULL,
+  `group_id` int(3) unsigned NOT NULL AUTO_INCREMENT,
+  `group_des` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,6 +62,7 @@ CREATE TABLE `groups` (
 
 LOCK TABLES `groups` WRITE;
 /*!40000 ALTER TABLE `groups` DISABLE KEYS */;
+INSERT INTO `groups` VALUES (1,'NEW_USER');
 /*!40000 ALTER TABLE `groups` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,7 +75,7 @@ DROP TABLE IF EXISTS `permissions`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `permissions` (
   `perm_id` int(2) unsigned NOT NULL AUTO_INCREMENT,
-  `description` varchar(30) NOT NULL,
+  `perm_des` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`perm_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -141,7 +135,7 @@ CREATE TABLE `questions` (
   `visible` int(2) NOT NULL,
   `permitted` text,
   PRIMARY KEY (`q_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -150,6 +144,7 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
+INSERT INTO `questions` VALUES (3,1,'Java Inheritence','In Java, a class can inherit from multiple parent classes.','false',NULL,NULL,NULL,'developer',2,2,''),(4,1,'BASIC origins.','BASIC was created for the sole purpose of being a teaching language.','true',NULL,NULL,NULL,'developer',108,2,'');
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -192,7 +187,11 @@ CREATE TABLE `users` (
   `email` varchar(60) NOT NULL,
   `group_id` int(3) unsigned NOT NULL,
   `perm_id` int(2) unsigned NOT NULL,
-  PRIMARY KEY (`username`)
+  PRIMARY KEY (`username`),
+  KEY `perm_id` (`perm_id`),
+  KEY `group_id` (`group_id`),
+  CONSTRAINT `users_ibfk_2` FOREIGN KEY (`perm_id`) REFERENCES `permissions` (`perm_id`),
+  CONSTRAINT `users_ibfk_3` FOREIGN KEY (`group_id`) REFERENCES `groups` (`group_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -202,7 +201,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('developer','123456','dev@emich.edu',1,1);
+INSERT INTO `users` VALUES ('bbush6','b5a369ac346a15cbb7a8b3e0202adc6b7c8a3e38','bbush6@emich.edu',1,4),('btbush','b408130e16f82595142a6312502bfd1c85afb914','btbush@med.umich.edu',1,4),('developer','123456','dev@emich.edu',1,1),('prof','123456','prof@emich.edu',1,2),('student','123456','student@emich.edu',1,3);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -239,4 +238,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-10-23  9:35:09
+-- Dump completed on 2015-11-22 11:34:38

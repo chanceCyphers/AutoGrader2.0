@@ -1,10 +1,12 @@
-<div class="createQuestionEssayPage">
+<div class="createQuestionShortAnswerPage">
 	
-	<form action="?controller=questions&action=create_essay" method="post">
+	<form action="?controller=questions&action=createShortAnswer" method="post">
 		Give the question a title: <br />
 		<input type="text" name="title"> <br />
 		The question:<br/>
-		<input type="text" name="question" size="60"><br />
+		<input type="text" name="question"><br />
+		Answer: <input type="text" name="answer"> <br />
+		<br/>
 		Choose Category:	
 		<select name="category">
 			<?php

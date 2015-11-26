@@ -41,7 +41,6 @@ class AccountManager {
 
 	public static function viewInfo($username) {
 		$db = Db::getInstance();
-
 		$accountQuery = $db->prepare('SELECT users.username, users.email, groups.group_des, permissions.perm_des 
 									  FROM users, groups, permissions 
 									  WHERE users.username = :username AND
@@ -51,6 +50,34 @@ class AccountManager {
 		$userInfo = $accountQuery->fetch(PDO::FETCH_ASSOC);
 
 		return $userInfo;
+	}
+
+	public static function changeEmail($username, $new_email) {
+		$db = Db::getInstance();
+
+		$changeQuery = $db->prepare('UPDATE users SET email = :new_email WHERE username = :username');
+		$changeQuery->execute(array('new_email' => $new_email, 'username' => $username));
+	}
+
+	public static function validatePassword($username, $password) {
+		$db = Db::getInstance();
+
+        $userQuery = $db->prepare('SELECT * FROM users WHERE username = :username AND pwd = :password');
+        $userQuery->execute(array('username' => $username, 'password' => $password));
+
+        $user = $userQuery->fetch(PDO::FETCH_ASSOC);
+
+        if ($user) {
+        	return true;
+        } else {
+        	return false;
+        }
+	}
+
+	public static function changePassword($username, $password) {
+		$db = Db::getInstance();
+		$changeQuery = $db->prepare('UPDATE users SET pwd = :password WHERE username = :username');
+		$changeQuery->execute(array('password' => $password, 'username' => $username));
 	}
 }
 

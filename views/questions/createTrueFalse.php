@@ -1,5 +1,4 @@
-<div class="createQuestionTrueFalsePage">
-	
+<div class="createQuestionTrueFalsePage">	
 	<form action="?controller=questions&action=createTrueFalse" method="post">
 		Give the question a title: <br/>
 		<input type="text" name="title"> <br/>
@@ -17,7 +16,6 @@
 						echo '<option value="'. $value . '">' . $value . '</option>';
 					}
 				}
-
 			?>
 		</select>
 		<br/>
@@ -27,6 +25,5 @@
 		<input type="radio" name="visible" value="3"> Selected Users:
 			<input type="text" name="permitted"> <br/>
 		<input type="submit" value="Create">
-	</form>
-	
+	</form>	
 </div>
