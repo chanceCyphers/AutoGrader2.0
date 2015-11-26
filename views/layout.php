@@ -27,7 +27,7 @@
                         require_once("guest_nav.php");
                     }
                 }
-                # For some reason, the navigation does not show right away unless refreshed.              
+                # For some reason, the navigation does not show right away unless refreshed.             
             ?>
 
         </div>
