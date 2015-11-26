@@ -11,7 +11,16 @@
 			}
 		}
 
+		public function changeInfo() {
+			require_once("views/admin/index.php");
+			if (isset($_POST['username'])) {
+				$userToChange = $_POST['username'];
+				$userProfile = AdminManager::searchUser($userToChange);
+				require_once("views/admin/changeInfo.php");
+			}
 
+
+		}
 
 	}
 
