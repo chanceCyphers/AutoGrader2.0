@@ -39,7 +39,7 @@ $allowedActions = array('login' => ['login', 'validateLogin', 'logout'],
                         'category' => ['index', 'create', 'delete', 'change'],
                         'questions' => ['index', 'create', 'createTrueFalse', 'createShortAnswer', 
                                         'createMultipleChoice', 'createEssay', 'viewQuestion'],
-                        'admin' => ['index', 'changeInfo']);
+                        'admin' => ['index', 'changeInfo', 'setUserGroup', 'setUserPermission']);
 
 if (array_key_exists($controller, $allowedActions)) {
     if (in_array($action, $allowedActions[$controller])) {
