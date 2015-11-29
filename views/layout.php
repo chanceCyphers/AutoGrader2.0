@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Auto-Grader</title>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="styles/site.css">
     </head>
 
@@ -14,8 +15,7 @@
         </div>
 
         <div id="navigation-wrapper">
-            <?php 
-                # Only show the navigation bar appropriate for the user based on permissions
+            <?php                 
                 if (isset($_SESSION['username']) && array_key_exists("username", $_SESSION)) {
                     if ($_SESSION['role'] == 1) {
                         require_once("admin_nav.php");
@@ -26,20 +26,21 @@
                     } else {
                         require_once("guest_nav.php");
                     }
+                } else {
+                    require_once("default_nav.php");
                 }
                 # For some reason, the navigation does not show right away unless refreshed.             
             ?>
 
-        </div>
-        
+        </div>        
         
         <div id="content-wrapper">
-        	              
-            
             <?php require_once('routes.php'); ?>
         </div>
 
         <footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         </footer>
     <body>
 <html>
