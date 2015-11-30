@@ -12,10 +12,7 @@
 
 
 </div>
-
-
-An email will be sent to your my.emich account with your temporary password.
-Some items are privileged. It is recommend you login while using this site so you can view all items for your user groups.
+<?php /*
 To Read A Document:
 Documents that may be opened or downloaded will have \"";redFlag("(open)");echo"\" next to them.
 Click on ";redFlag("(open)"); echo ".
@@ -32,3 +29,4 @@ To Change your password:
 Login.
 You will see Change Password towards the top of the page. Click on it and follow the instructions.
 */
+?>

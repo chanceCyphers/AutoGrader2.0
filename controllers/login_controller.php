@@ -21,6 +21,8 @@ class LoginController {
         } else {
             require_once('views/login/failure.php');
         }
+
+        echo "<script> window.location.assign('index.php?controller=home') </script>";
     }
 
     public function logout() {
