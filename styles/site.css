@@ -18,17 +18,12 @@
     border-top-color: black;
 }
 
-.login-div {
-    width: 400px;
+.centered-box {
+    width: 450px;
     margin: auto;
 }
 
-.forgot-pass-div {
-    width: 400px;
-    margin: auto;    
-}
-
-.forgot-pass-div p {
+.centered-box p {
     text-align: justify;
 }
 

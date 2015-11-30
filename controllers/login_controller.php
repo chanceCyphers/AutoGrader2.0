@@ -27,7 +27,6 @@ class LoginController {
         unset($_SESSION['username']);
         unset($_SESSION['role']);
         session_destroy();
-        echo "You have been logged out.";
         # Redirect to homepage on logout
         echo "<script> window.location.assign('index.php') </script>";
     }

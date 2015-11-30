@@ -2,6 +2,7 @@
 	<div class="container-fluid">
 		<ul class="nav navbar-nav">	
 			<li><a href="?controller=home">Home</a></li>
+			<li><a href="?controller=home&action=howToUse"> About </a> </li>
 			<li><a href="?controller=tests">Tests</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">

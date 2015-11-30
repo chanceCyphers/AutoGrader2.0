@@ -1,3 +1,20 @@
+<?php
+    $nav = "";             
+    if (isset($_SESSION['username']) && array_key_exists("username", $_SESSION)) {
+        if ($_SESSION['role'] == 1) {
+            $nav = "admin_nav.php";
+        } else if ($_SESSION['role'] == 2) {
+            $nav = "prof_nav.php";
+        } else if ($_SESSION['role'] == 3) {
+            $nav = "student_nav.php";
+        } else {
+            $nav = "guest_nav.php";
+        }
+    } else {
+        $nav = "default_nav.php";
+    }           
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,7 +23,7 @@
         <link rel="stylesheet" href="styles/site.css">
     </head>
 
-    <body>
+    <body>    
         <div id="header">
             <div id="header-top">
             </div>
@@ -15,23 +32,7 @@
         </div>
 
         <div id="navigation-wrapper">
-            <?php                 
-                if (isset($_SESSION['username']) && array_key_exists("username", $_SESSION)) {
-                    if ($_SESSION['role'] == 1) {
-                        require_once("admin_nav.php");
-                    } else if ($_SESSION['role'] == 2) {
-                        require_once("prof_nav.php");
-                    } else if ($_SESSION['role'] == 3) {
-                        require_once("student_nav.php");
-                    } else {
-                        require_once("guest_nav.php");
-                    }
-                } else {
-                    require_once("default_nav.php");
-                }
-                # For some reason, the navigation does not show right away unless refreshed.             
-            ?>
-
+            <?php require_once($nav); ?>
         </div>        
         
         <div id="content-wrapper">
@@ -42,5 +43,5 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         </footer>
-    <body>
-<html>
+    </body>
+</html>
