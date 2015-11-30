@@ -1,5 +1,4 @@
-<div class="createQuestionTrueFalsePage">
-	
+<div class="createQuestionTrueFalsePage">	
 	<form action="?controller=questions&action=createTrueFalse" method="post">
 		Give the question a title: <br/>
 		<input type="text" name="title"> <br/>
@@ -21,12 +20,10 @@
 		</select>
 		<br/>
 		Choose who can use the question: <br/>
-		None (Private) <input type="radio" name="visible" value="1"> <br/>
-		All (Global) <input type="radio" name="visible" value="2"> <br/>
-		Select Users <input type="radio" name="visible" value="3"> <br/>
-		Usernames that can view the question (seperate by commas):
-		<input type="text" name="permitted"> <br/>
+		<input type="radio" name="visible" value="1"> None (Private) <br/>
+		<input type="radio" name="visible" value="2"> All (Global) <br/>
+		<input type="radio" name="visible" value="3"> Selected Users:
+			<input type="text" name="permitted"> <br/>
 		<input type="submit" value="Create">
-	</form>
-	
+	</form>	
 </div>
