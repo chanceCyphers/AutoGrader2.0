@@ -1,21 +1,19 @@
-<div id="regDiv">
+<div class="container centered-box">
     <h2>Enter New Account Information</h2>
     <form action="?controller=account&action=regNewUser" method="post">
-        <div>
-            <p>Desired Username:</p>
-            <input type="text" name="username" size="30">
+        <div class="form-group">
+            <label for="username"> Desired Username </label>
+            <input class="form-control" type="text" name="username" placeholder="Username">
         </div>
-        <div>
-            <p>Email Address:</p>
-            <input type="text" name="email" size="40">
+        <div class="form-group">
+            <label for="email"> Email Address </label>
+            <input class="form-control" type="email" name="email" placeholder="Email">
         </div>
-        <div>
-            <input type="submit" value="submit">
-        </div>
-        <div>
-            <p> If the credentials are accepted by the system, a randomized password
-                will be emailed to the address provided. Once received, please log in
-                with this information and personalize the password.</p>
+        <div class="form-group">
+            <input class="btn btn-default" type="submit" value="Register">
         </div>
     </form>
+        <p> If the credentials are accepted by the system, a randomized password
+        will be emailed to the address provided. Once received, please log in
+        with this information and personalize the password.</p>
 </div>

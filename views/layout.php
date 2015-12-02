@@ -1,39 +1,47 @@
+<?php
+    $nav = "";             
+    if (isset($_SESSION['username']) && array_key_exists("username", $_SESSION)) {
+        if ($_SESSION['role'] == 1) {
+            $nav = "admin_nav.php";
+        } else if ($_SESSION['role'] == 2) {
+            $nav = "prof_nav.php";
+        } else if ($_SESSION['role'] == 3) {
+            $nav = "student_nav.php";
+        } else {
+            $nav = "guest_nav.php";
+        }
+    } else {
+        $nav = "default_nav.php";
+    }           
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
         <title>Auto-Grader</title>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="styles/site.css">
     </head>
 
-    <body>
+    <body>    
         <div id="header">
             <div id="header-top">
             </div>
             <div id="header-bottom">
             </div>
         </div>
-        
+
+        <div id="navigation-wrapper">
+            <?php require_once($nav); ?>
+        </div>        
         
         <div id="content-wrapper">
-        	<?php require_once('navBar.php'); ?>
-            
             <?php require_once('routes.php'); ?>
         </div>
 
         <footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         </footer>
-    <body>
-<html>
-
-<?php       # comments
-            # This is the main layout page, where the HTML is generated from, and what most
-            # of the CSS file applies its styling to. It requires routes.php, which accesses
-            # the controller and action variables from index.php and calls the appropriate
-            # controller for whatever the action was that took place.
-
-
-
-
-?>
-
-
+    </body>
+</html>

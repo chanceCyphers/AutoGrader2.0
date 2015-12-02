@@ -21,6 +21,16 @@ class LoginController {
         } else {
             require_once('views/login/failure.php');
         }
+
+        echo "<script> window.location.assign('index.php?controller=home') </script>";
+    }
+
+    public function logout() {
+        unset($_SESSION['username']);
+        unset($_SESSION['role']);
+        session_destroy();
+        # Redirect to homepage on logout
+        echo "<script> window.location.assign('index.php') </script>";
     }
 }
 

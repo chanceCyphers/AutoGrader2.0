@@ -1,5 +1,9 @@
 <?php
-session_start();
+	session_start();
+	if (sessionExpired()) {
+		session_start();
+	}
+
 require_once('connection.php');
 
 if (isset($_GET['controller'])) {
@@ -17,17 +21,29 @@ if (isset($_GET['controller'])) {
 
 require_once('views/layout.php');
 
-?>
+function sessionExpired() {
+	if (!isset($_SESSION['username']))
+		return false;
 
-<?php 	#comments
-		# Everything starts here. The file is loaded and $controller and $action are set to 
-		# their defaults, which is 'login'. It then requires the layout.php file once to
-		# load the HTML for the page. 
+	if (!isset($_SESSION['lastTime'])) {
+		$_SESSION['lastTime'] = time();
+		return false;
+	}
 
-		# This page is the "gateway" to the application. Even though many different files
-		# get loaded, this is the only page that the users will see. As such, the $_GET
-		# global will continually be updated as forms and other sumbissions are activated
+	$now = time();
+	$last = $_SESSION['lastTime'];
+	$diff = $now - $last;
 
-
+	if ($diff > 1800) {
+		unset($_SESSION['username']);
+		unset($_SESSION['role']);
+		session_unset();
+		session_destroy();
+		return true;
+	} else {
+		$_SESSION['lastTime'] = time();
+	}
+	return false;
+}
 
 ?>
