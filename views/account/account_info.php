@@ -1,8 +1,6 @@
 <?php
 	# Users will be able to view their account details here, and change their password
 	# or email address.
-	
-	echo "<br />";
 	echo "<div id=accountInfoDiv>";
 	echo "<h2> Account Information </h2>";
 	echo "<div id=accountInfoDivUser>";

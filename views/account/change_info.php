@@ -1,6 +1,10 @@
 <?php
 
+$user = $userProfile['username'];
+$user = strtoupper($user);
+
 echo "<div class='container centered-box'>";
+echo 	"<h2> Change Information for " . $user . "</h2>";
 echo 	"<form action='?controller=account&action=changeInfo' method='post'>";
 echo 		"<h3>Change User Email</h3>";
 echo 		"<div class='form-group'>";
