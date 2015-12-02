@@ -35,8 +35,6 @@
 				}
 		echo "</select>";
 
-
-	#DROPDOWN MENU HERE
 	echo "<input type='submit' value='Change' />";
 	echo "</form>";
 

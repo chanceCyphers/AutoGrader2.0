@@ -1,29 +1,37 @@
 <?php
-	echo "<br />";
-	echo "<div id=accountInfoDiv>";
-		echo "<h2> Change Account Information </h2>";
-		echo "<div id=accountInfoDivUser>";
-			echo "<b> Username: </b> " . $userProfile['username'] . "<br />";
-			echo "<b> Email: </b>" . $userProfile['email'] . "<br />";
-			echo "<b> Groups: </b>" . $userProfile['group_des'] . "<br />";
-			echo "<b> Permissions Level: </b>" . $userProfile['perm_des'] . "<br />";
-			echo "<br />";
-		echo "</div>";
-	echo "</div>";
 
-	echo "<form action='?controller=account&action=changeInfo' method='post'>";
-		echo "<h3>Change User Email</h3>";
-		echo "New Email: <input type='text' name='new_email' size='30' /> <br/>";
-		echo "<input type='submit' value='Change'>";
-	echo "</form>";
+$user = $userProfile['username'];
+$user = strtoupper($user);
 
-	echo "<br/>";
+echo "<div class='container centered-box'>";
+echo 	"<h2> Change Information for " . $user . "</h2>";
+echo 	"<form action='?controller=account&action=changeInfo' method='post'>";
+echo 		"<h3>Change User Email</h3>";
+echo 		"<div class='form-group'>";
+echo  		"<input class='form-control' type='email' name='new_email' placeholder='New Email'>";
+echo  	"</div>";
+echo  	"<div class='form-group'>";
+echo  		"<input class='btn btn-default' type='submit' value='Change'>";
+echo  	"</div>";
+echo 	"</form>";
+echo "</div>";
 
-	echo "<form action='?controller=account&action=changeInfo' method='post'>";
-		echo "<h3>Change User Password</h3>";
-		echo "Current Password: <input type='password' name='password' />  <br/>";
-		echo "New Password: <input type='password' name='new_pass' />  <br/>";
-		echo "Retype Password: <input type='password' name='new_pass_check' />  <br/>";
-		echo "<input type='submit' value='Change'>";
-	echo "</form>";
+echo "<div class='container centered-box'>";
+echo 	"<form action='?controller=account&action=changeInfo' method='post'>";
+echo 		"<h3>Change User Password</h3>";
+echo  	"<div class='form-group'>";
+echo    	"<input class='form-control' type='password' name='password' placeholder='Current Password'>";
+echo  	"</div>";
+echo  	"<div class='form-group'>";
+echo    	"<input class='form-control' type='password' name='password' placeholder='New Password'>";
+echo  	"</div>";
+echo  	"<div class='form-group'>";
+echo    	"<input class='form-control' type='password' name='new_pass_check' placeholder='Re-Type New Password'>";
+echo  	"</div>";
+echo  	"<div class='form-group'>";
+echo  		"<input class='btn btn-default' type='submit' value='Change'>";
+echo  	"</div>";
+echo 	"</form>";
+echo "</div>";
+
 ?>

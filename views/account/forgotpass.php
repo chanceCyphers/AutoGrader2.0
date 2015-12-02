@@ -1,4 +1,4 @@
-<div class="container forgot-pass-div">
+<div class="container centered-box">
   <h2>Account Retrieval</h2>
     <form action="?controller=account&action=forgotPass" method="post">
       <div class="form-group">
