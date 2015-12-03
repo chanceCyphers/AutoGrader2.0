@@ -27,6 +27,8 @@ function call($controller, $action)
             require_once("models/admin_manager.php");
             $controller = new AdminController();
             break;
+        case 'tests':
+           $controller = new TestsController();
     }
 
     $controller->{$action}();
@@ -34,12 +36,13 @@ function call($controller, $action)
 
 //eventually we will need to figure out one's allowed actions based on their role
 $allowedActions = array('login' => ['login', 'validateLogin', 'logout'],
-                        'home' => ['index', 'howToUse'],
+                        'home' => ['index'],
                         'account' => ['newAccount', 'regNewUser', 'forgotPass', 'viewInfo', 'changeInfo'],
                         'category' => ['index', 'create', 'delete', 'change'],
                         'questions' => ['index', 'create', 'createTrueFalse', 'createShortAnswer', 
                                         'createMultipleChoice', 'createEssay', 'viewQuestion'],
-                        'admin' => ['index', 'changeInfo', 'setUserGroup', 'setUserPermission']);
+                        'admin' => ['index', 'changeInfo', 'setUserGroup', 'setUserPermission'],
+                        'tests' => ['index', 'create','createTest','viewTest','takeTest','submitTest']);
 
 if (array_key_exists($controller, $allowedActions)) {
     if (in_array($action, $allowedActions[$controller])) {

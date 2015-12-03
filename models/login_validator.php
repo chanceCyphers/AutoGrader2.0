@@ -15,6 +15,7 @@ class LoginValidator {
         } else {
             $_SESSION['username'] = $user['username'];
             $_SESSION['role'] = $user['perm_id'];
+            $_SESSION['groupId'] = $user['group_id'];
             return true;
         }
     }
