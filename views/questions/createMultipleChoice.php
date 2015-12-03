@@ -1,4 +1,4 @@
-<div class="container centered-box">	
+<div class="container col-md-6 col-sm-offset-3">		
 	<form action="?controller=questions&action=createTrueFalse" method="post">
 		<h2> Create Multiple Choice Question </h2>
 		<div class="form-group">
@@ -16,7 +16,7 @@
 		<span class="help-block"> When a Multiple Choice question is used in a test, the answer choices
 								  will be randomized. </span>
 		<div class="form-group">
-			<label> Enter Three Incorrect Answers to the Question </label>
+			<label> Enter Three Incorrect Answers </label>
 			<div class="form-group"> <input class="form-control" type="text" name="choice_1" placeholder="Choice 1"> </div>
 			<div class="form-group"> <input class="form-control" type="text" name="choice_2" placeholder="Choice 2"> </div>
 			<div class="form-group"> <input class="form-control" type="text" name="choice_3" placeholder="Choice 3"> </div>
