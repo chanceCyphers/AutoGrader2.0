@@ -1,4 +1,4 @@
-<div class="container centered-box">
+<div class="container centered-box">	
 	<h2> Enter Login Information </h2>
 		<form action="?controller=login&action=validateLogin" method="post">
 	  	<div class="form-group">
