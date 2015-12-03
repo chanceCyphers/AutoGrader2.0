@@ -7,7 +7,11 @@
 			<li><a href="?controller=tests">Tests</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="?controller=admin&action=index">Admin</a></li>
+			<li class="dropdown">
+				<a class "dropdown-toggle" data-toggle="dropdown" href="?controller=admin&action=index">Admin 
+					<span class="caret"></span></a></li>
+					<ul class="dropdown-menu">
+						<li> <a href="?controller=admin&action=index"> Edit User </a> </li>
 			<li><a href="?controller=account&action=viewInfo">
 				<span class="glyphicon glyphicon-user"></span> View Account </a></li>
 			<li><a href="?controller=login&action=logout">
