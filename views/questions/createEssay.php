@@ -1,4 +1,4 @@
-<div class="container centered-box">	
+<div class="container col-md-6 col-sm-offset-3">	
 	<form action="?controller=questions&action=createTrueFalse" method="post">
 		<h2> Create Essay Question </h2>
 		<div class="form-group">
