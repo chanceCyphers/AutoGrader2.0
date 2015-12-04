@@ -23,7 +23,7 @@ echo "  Rename Group  ";
 echo "	<form action='?controller=admin&action=manageGroups' method='post'> ";
 echo "  <input type='text' name='group_name' placeholder='old name'>  ";
 echo "  <input type='text' name='group_new_name' placeholder='new name'>  ";
-echo "  <input type='submit' value='Create'>  ";
+echo "  <input type='submit' value='Rename'>  ";
 echo "  </form>  ";
 
 echo " <br/> ";
@@ -31,7 +31,7 @@ echo " <br/> ";
 echo "  Delete Group  ";
 echo "	<form action='?controller=admin&action=manageGroups' method='post'> ";
 echo "  <input type='text' name='group_delete'>  ";
-echo "  <input type='submit' value='Create'>  ";
+echo "  <input type='submit' value='Delete'>  ";
 echo "  </form>  ";
 
 ?>
