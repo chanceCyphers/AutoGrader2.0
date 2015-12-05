@@ -37,7 +37,7 @@ class CreateTestDBCommunicator {
         $group_ids = $userQuery->fetchAll(PDO::FETCH_ASSOC);
         return $group_ids;
     }
-	public static function insertTest($q_ids,$title1,$startDate,$endDate,$group_id){
+	public static function insertTest($q_ids,$title1,$startDate,$endDate,$group_id,$test_title){
         $userName = $_SESSION['username'];
         $db = Db::getInstance();
         $data = $q_ids;
@@ -45,7 +45,7 @@ class CreateTestDBCommunicator {
         $currentDate = date("Y-m-d");
         $test_id = uniqid($userName.'_'.$title1.'_');
         $_SESSION['test_id'] = $test_id;
-        $query11 = "Insert into test VALUES('" . $test_id . "','" . $insert_data . "','" . $currentDate . "','" . $startDate . "','" . $endDate . "','" . $group_id . "')";
+        $query11 = "Insert into test VALUES('" . $test_id . "','" . $insert_data . "','" . $currentDate . "','" . $startDate . "','" . $endDate . "','" . $group_id . "','" . $test_title . "')";
         $userQuery = $db->prepare($query11);
         $userQuery->execute();
         return $insert_data;
