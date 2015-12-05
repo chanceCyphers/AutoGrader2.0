@@ -26,7 +26,7 @@ class CreateQuestionDbCommunicator {
 
 	public static function createMultipleChoiceQuestion($type, $title, $question, $answer, $choice_1, $choice_2, $choice_3, $owner, $cat_id, $visible, $permitted) {
 		$db = Db::getInstance();
-
+		
 		$questionInsert = $db->prepare('INSERT INTO questions (type, title, question, 
 		answer, choice_1, choice_2, choice_3, owner, cat_id, visible, permitted)
 		VALUES (:type, :title, :question, :answer, :choice_1, :choice_2, :choice_3, :owner, :cat_id, :visible, :permitted)');

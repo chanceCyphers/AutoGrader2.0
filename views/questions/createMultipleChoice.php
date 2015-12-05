@@ -1,5 +1,5 @@
 <div class="container col-md-6 col-sm-offset-3">		
-	<form action="?controller=questions&action=createTrueFalse" method="post">
+	<form action="?controller=questions&action=createMultipleChoice" method="post">
 		<h2> Create Multiple Choice Question </h2>
 		<div class="form-group">
 			<label for="title"> Give the question a title </label>

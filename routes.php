@@ -34,18 +34,22 @@ function call($controller, $action)
     $controller->{$action}();
 }
 
+
 if (isset($_SESSION) && array_key_exists('role', $_SESSION)) {
     // If User is an admin of the site
     if ($_SESSION['role'] == 1) {
         $allowedActions = array('login' => ['login', 'validateLogin', 'logout'],
-                        'home' => ['index'],
+                        'home' => ['index', 'howToUse'],
+
                         'account' => ['newAccount', 'regNewUser', 'forgotPass', 'viewInfo', 'changeInfo'],
                         'category' => ['index', 'create', 'delete', 'change'],
                         'questions' => ['index', 'create', 'createTrueFalse', 'createShortAnswer', 
                                         'createMultipleChoice', 'createEssay', 'viewQuestion'],
+
                         'admin' => ['index', 'changeInfo', 'setUserGroup', 'setUserPermission'],
                         'tests' => ['index', 'create','createTest','viewTest','takeTest','submitTest']
                         );
+
     // If User is a professor
     } else if ($_SESSION['role'] == 2) {
         $allowedActions = array('login' => ['login', 'validateLogin', 'logout'],
@@ -77,7 +81,6 @@ if (isset($_SESSION) && array_key_exists('role', $_SESSION)) {
                            );
 }
 
-
 if (array_key_exists($controller, $allowedActions)) {
     if (in_array($action, $allowedActions[$controller])) {
         call($controller, $action);
@@ -88,11 +91,4 @@ if (array_key_exists($controller, $allowedActions)) {
     call('pages', 'error');
 }
 
-?>
-
-
-<?php       # comments
-            # This is the page that calls the controllers and actions that those controllers take.
-            # Controllers are responsible for getting information from the user, and the models, and
-            # changing the view based the action taken by the user.
 ?>

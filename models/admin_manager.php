@@ -15,7 +15,6 @@
 	        $user = $userQuery->fetch(PDO::FETCH_ASSOC);
 
 	        return $user;
-
 		}
 
 		# Obtains a list of all of the group names
@@ -65,6 +64,31 @@
 			
 		}
 
+		public static function createGroup($newGroup) {
+			$db = Db::getInstance();
+			$createGroup = $db->prepare('INSERT INTO groups (group_des) VALUES (:newGroup)');
+			$createGroup->execute(array('newGroup' => $newGroup));
+		}
+
+		public static function renameGroup($oldGroupName, $newGroupName) {
+			$db = Db::getInstance();
+			$createGroup = $db->prepare('UPDATE groups SET group_des = :newGroupName WHERE group_des = :oldGroupName');			
+			$createGroup->execute(array('newGroupName' => $newGroupName, 'oldGroupName' => $oldGroupName));
+		}
+
+		public static function deleteGroup($groupName) {
+			$db = Db::getInstance();
+			$createGroup = $db->prepare('DELETE FROM groups WHERE group_des = :groupName');			
+			$createGroup->execute(array('groupName' => $groupName));
+		}
+
+		public static function groupExist($groupName) {
+			$db = Db::getInstance();
+			$groupCheck = $db->prepare('SELECT group_des FROM groups WHERE group_des = :groupName');
+			$groupCheck->execute(array('groupName' => $groupName));
+			$result = $groupCheck->fetch(PDO::FETCH_ASSOC);
+			return $result;
+		}
 	}
 
 

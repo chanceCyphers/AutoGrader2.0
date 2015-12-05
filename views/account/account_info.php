@@ -1,7 +1,7 @@
 <?php
 	# Users will be able to view their account details here, and change their password
 	# or email address.
-	echo "<div id=accountInfoDiv>";
+	echo "<div class='centered-box'>";
 	echo "<h2> Account Information </h2>";
 	echo "<div id=accountInfoDivUser>";
 	echo "<b> Username: </b> " . $userProfile['username'] . "<br />";
