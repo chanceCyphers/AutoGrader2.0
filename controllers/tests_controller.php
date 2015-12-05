@@ -35,8 +35,9 @@ class TestsController
         $startDate = $_POST['start_date'];
         $endDate = $_POST['end_date'];
         $group_id = $_POST['group_id'];
+        $test_title = $_POST['test_title'];
         $title1 = $_SESSION['SelectTitle'];
-        $question1 = CreateTestDBCommunicator::insertTest($qids,$title1,$startDate,$endDate,$group_id);
+        $question1 = CreateTestDBCommunicator::insertTest($qids,$title1,$startDate,$endDate,$group_id,$test_title);
       //  $question11 = CreateTestDBCommunicator::insertTest();
         require_once('views/tests/Questions_Added_to_Test_Success.php');
     }

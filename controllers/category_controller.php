@@ -4,17 +4,21 @@ Class CategoryController {
 
 	# View all of the categories in a hierarchy - serves as landing page
 	function index() {
-		$categories = CategoryManager::view();		
+		$topLevels = CategoryManager::viewTopLevel();		
 		require_once("views/categories/index.php");
+	}
+
+	function view() {
+		$location = $_GET['location'];
+		$childrenList = CategoryManager::getCategoryChildren($location);
+		require_once("views/categories/categories.php");
 	}
 
 	# Create a new category
 	function create() {
 		require_once("views/categories/create.php");
 		if(isset($_POST)) {
-			$name = $_POST['cat_name'];
-			$parent = $_POST['cat_parent'];
-			$success = CategoryManager::create($name, $parent);			
+				
 		}
 	}
 

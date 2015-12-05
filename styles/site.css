@@ -40,3 +40,8 @@ h2 {
     padding-left: 4px;
     margin: 4px;
 }
+
+.category-pos {
+    height: 20px;
+    background-color: #eaf1d1;
+}

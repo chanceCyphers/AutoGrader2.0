@@ -2,6 +2,57 @@
 
 	class CategoryManager {
 
+		public static function viewTopLevel() {
+			$db = Db::getInstance();
+			$topReg = "^[0-9]+$";
+			// Returns the list of the top level categories
+			$categoryQuery = $db->prepare('SELECT location, description FROM categories WHERE location REGEXP :topReg
+																		 ORDER BY location');
+			$categoryQuery->execute(array('topReg' => $topReg));
+
+			$topLevels = $categoryQuery->fetchAll(PDO::FETCH_ASSOC);
+
+			return $topLevels;
+		}
+
+		// Return a list of only the categories under this category
+		public static function getCategoryChildren($categoryID) {
+			$db = Db::getInstance();
+			$childrenReg = "^" . $categoryID . ".[0-9]+$";
+			$childrenQuery = $db->prepare('SELECT location, description FROM categories WHERE location REGEXP :childrenReg
+																	   ORDER BY location');
+			$childrenQuery->execute(array('childrenReg' => $childrenReg));
+
+			$childrenList = $childrenQuery->fetchAll(PDO::FETCH_ASSOC);
+
+			return $childrenList;
+
+		}
+
+		public static function create() {
+
+
+		}
+
+		public static function delete() {
+
+
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+		/* Retiring all of these options in favor of restoring to previous function
+
 		# Returns a list of categories that are sorted by their location identifiers
 		public static function view() {
 			$db = Db::getInstance();
@@ -103,9 +154,9 @@
 		}
 
 
+*/
 
 	}
-
 
 
 ?>

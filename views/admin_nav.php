@@ -21,7 +21,14 @@
             <li><a href="#">Delete</a></li>
           </ul>
         </li>
-			<li><a href="?controller=tests">Tests</a></li>
+			<li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tests
+        <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="?controller=tests&action=index">Create</a></li>
+            <li><a href="#">View Results</a></li>
+          </ul>
+        </li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 		<li class="dropdown">

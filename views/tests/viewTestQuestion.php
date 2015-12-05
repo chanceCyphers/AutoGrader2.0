@@ -1,17 +1,23 @@
+<div class="container centered-box">
 <div class="viewTestQuestionPage">
 
     <form action='?controller=tests&action=createTest' method='post'>
-        <H3>Enter Test Timings:</H3>
+        <H3>Enter Test Timings: </H3>
         <label>Test Start Date: </label><input type="date" name="start_date"><br/><br/>
         <label>Test End Date: </label><input type="date" name="end_date"><br/><br/>
 
-        <label>Select Test Group: </label> <select  name='group_id'>
+        <label>Select Test Group: </label> 
+
+        <select  name='group_id'>
             <?php
             foreach ($group_ids as $row) {
                 echo "<option id='group_id' value='".$row[group_id]."'>	".$row[group_id]."</option>";
             }
             ?>
         </select><br/><br/>
+
+        <label>Select Test Title: </label> 
+        <input type="text" name="test_title"><label style="font-size: x-small">(Ex: Quiz 1, Final Exam)</label>
 
         <h3>Select questions: </h3>
     <?php
@@ -32,4 +38,5 @@
     echo "</form>";
     ?>
 
+</div>
 </div>
