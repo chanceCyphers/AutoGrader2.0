@@ -37,7 +37,6 @@
 					return;
 				}
 			}
-			####
 
 			# Reaching this point means that the category can be created as new under this parent.
 			if ($parentExists) {

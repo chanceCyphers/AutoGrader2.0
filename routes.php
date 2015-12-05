@@ -34,15 +34,49 @@ function call($controller, $action)
     $controller->{$action}();
 }
 
-//eventually we will need to figure out one's allowed actions based on their role
-$allowedActions = array('login' => ['login', 'validateLogin', 'logout'],
+if (isset($_SESSION) && array_key_exists('role', $_SESSION)) {
+    // If User is an admin of the site
+    if ($_SESSION['role'] == 1) {
+        $allowedActions = array('login' => ['login', 'validateLogin', 'logout'],
                         'home' => ['index'],
                         'account' => ['newAccount', 'regNewUser', 'forgotPass', 'viewInfo', 'changeInfo'],
                         'category' => ['index', 'create', 'delete', 'change'],
                         'questions' => ['index', 'create', 'createTrueFalse', 'createShortAnswer', 
                                         'createMultipleChoice', 'createEssay', 'viewQuestion'],
                         'admin' => ['index', 'changeInfo', 'setUserGroup', 'setUserPermission'],
-                        'tests' => ['index', 'create','createTest','viewTest','takeTest','submitTest']);
+                        'tests' => ['index', 'create','createTest','viewTest','takeTest','submitTest']
+                        );
+    // If User is a professor
+    } else if ($_SESSION['role'] == 2) {
+        $allowedActions = array('login' => ['login', 'validateLogin', 'logout'],
+                        'home' => ['index'],
+                        'account' => ['newAccount', 'regNewUser', 'forgotPass', 'viewInfo', 'changeInfo'],
+                        'category' => ['index', 'create', 'delete', 'change'],
+                        'questions' => ['index', 'create', 'createTrueFalse', 'createShortAnswer', 
+                                        'createMultipleChoice', 'createEssay', 'viewQuestion'],
+                        'tests' => ['index', 'create','createTest','viewTest','takeTest','submitTest']
+                        );
+
+    // If User is a student
+    } else if ($_SESSION['role'] == 3) {
+        $allowedActions = array('login' => ['login', 'validateLogin', 'logout'],
+                        'home' => ['index'],
+                        'account' => ['newAccount', 'regNewUser', 'forgotPass', 'viewInfo', 'changeInfo'],
+                        'tests' => ['index', 'takeTest','submitTest']
+                         );
+
+    } else {
+        $allowedActions = array( 'login' => ['login', 'validateLogin', 'logout'], 'home' => ['index'], 
+                            'account' => ['newAccount', 'regNewUser', 'forgotPass', 'viewInfo', 'changeInfo'],
+                           );
+
+    }
+} else {
+    $allowedActions = array( 'login' => ['login', 'validateLogin', 'logout'], 'home' => ['index'], 
+                            'account' => ['newAccount', 'regNewUser', 'forgotPass', 'viewInfo', 'changeInfo'],
+                           );
+}
+
 
 if (array_key_exists($controller, $allowedActions)) {
     if (in_array($action, $allowedActions[$controller])) {
