@@ -1,7 +1,7 @@
 <h2> Group Manager </h2>
 
 <?php
-
+	echo " <div class='centered-box'> ";
 	echo "Available Groups <br/>";
 	foreach($groupList as $array => $keys) {
 		foreach ($keys as $key => $value) {
@@ -10,7 +10,6 @@
 	}
 
 echo " <br/> ";
-
 echo "  Create New Group  ";
 echo "	<form action='?controller=admin&action=manageGroups' method='post'> ";
 echo "  <input type='text' name='group_create'>  ";

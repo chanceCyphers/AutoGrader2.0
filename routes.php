@@ -46,7 +46,7 @@ if (isset($_SESSION) && array_key_exists('role', $_SESSION)) {
                         'questions' => ['index', 'create', 'createTrueFalse', 'createShortAnswer', 
                                         'createMultipleChoice', 'createEssay', 'viewQuestion'],
 
-                        'admin' => ['index', 'changeInfo', 'setUserGroup', 'setUserPermission'],
+                        'admin' => ['index', 'changeInfo', 'setUserGroup', 'setUserPermission', 'manageGroups'],
                         'tests' => ['index', 'create','createTest','viewTest','takeTest','submitTest']
                         );
 
