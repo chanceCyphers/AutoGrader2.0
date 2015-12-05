@@ -3,12 +3,36 @@
 		<ul class="nav navbar-nav">	
 			<li><a href="?controller=home">Home</a></li>
 			<li><a href="?controller=home&action=howToUse"> About </a> </li>
-			<li><a href="?controller=category&action=index">Categories</a></li>
-			<li><a href="?controller=questions">Questions</a></li>
+			<li class="dropdown">
+    		<a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories
+      	<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="?controller=category&action=index">Create</a></li>
+            <li><a href="#">Edit</a></li>
+            <li><a href="#">Delete</a></li>
+          </ul>
+        </li>
+			<li class="dropdown">
+	    	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Questions
+	      <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="?controller=questions">Create</a></li>
+            <li><a href="#">Edit</a></li>
+            <li><a href="#">Delete</a></li>
+          </ul>
+        </li>
 			<li><a href="?controller=tests">Tests</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="?controller=admin&action=index">Admin</a></li>
+		<li class="dropdown">
+    		<a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin
+      	<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="?controller=admin&action=changeInfo">Manage Users</a></li>
+            <li><a href="?controller=admin&action=manageGroups">Manage Groups</a></li>
+            <li><a href="?controller=admin&action=editPermissions">Manage Permissions</a></li>
+          </ul>
+        </li>
 			<li><a href="?controller=account&action=viewInfo">
 				<span class="glyphicon glyphicon-user"></span> View Account </a></li>
 			<li><a href="?controller=login&action=logout">

@@ -110,6 +110,7 @@ class QuestionsController {
         CreateQuestionDbCommunicator::createMultipleChoiceQuestion($type, $title, $question, $answer, $choice_1, $choice_2, 
                                                                    $choice_3, $owner, $cat_id, $visible, $permitted);
 
+        // require_once('views/questions/createSuccess.php');
         require_once('views/questions/createSuccess.php');
     }
 

@@ -12,6 +12,7 @@
         }
     } else {
         $nav = "default_nav.php";
+        $_SESSION['role'] = 4;
     }           
 ?>
 

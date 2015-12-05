@@ -2,10 +2,11 @@
 
 	class CategoryManager {
 
+		# Returns a list of categories that are sorted by their location identifiers
 		public static function view() {
 			$db = Db::getInstance();
 
-			$categoryQuery = $db->prepare('SELECT description FROM categories');
+			$categoryQuery = $db->prepare('SELECT location, description FROM categories ORDER BY location');
 			$categoryQuery->execute();
 
 			$categoryList = $categoryQuery->fetchAll(PDO::FETCH_ASSOC);
@@ -37,7 +38,6 @@
 					return;
 				}
 			}
-			####
 
 			# Reaching this point means that the category can be created as new under this parent.
 			if ($parentExists) {
