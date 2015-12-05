@@ -42,7 +42,7 @@ if (isset($_SESSION) && array_key_exists('role', $_SESSION)) {
                         'home' => ['index', 'howToUse'],
 
                         'account' => ['newAccount', 'regNewUser', 'forgotPass', 'viewInfo', 'changeInfo'],
-                        'category' => ['index', 'create', 'delete', 'change'],
+                        'category' => ['index', 'view', 'create', 'delete', 'change'],
                         'questions' => ['index', 'create', 'createTrueFalse', 'createShortAnswer', 
                                         'createMultipleChoice', 'createEssay', 'viewQuestion'],
 
