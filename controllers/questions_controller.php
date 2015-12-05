@@ -111,7 +111,7 @@ class QuestionsController {
                                                                    $choice_3, $owner, $cat_id, $visible, $permitted);
 
         // require_once('views/questions/createSuccess.php');
-        print_r($_POST);
+        require_once('views/questions/createSuccess.php');
     }
 
     public function createEssay() {
