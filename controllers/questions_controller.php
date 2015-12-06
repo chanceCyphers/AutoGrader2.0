@@ -4,8 +4,8 @@ class QuestionsController {
     
     public function index() {
         require_once('models/view_questions_db_communicator.php');
-		$questions = ViewQuestionsDbCommunicator::getAllQuestions();
-		
+		$questionsUser = ViewQuestionsDbCommunicator::getAllQuestionsByUser();
+		$questionsPerm = ViewQuestionsDbCommunicator::getQuestionsByPermissions();
         require_once('views/questions/index.php');
     }
     
@@ -120,7 +120,7 @@ class QuestionsController {
         $type = 4; #ESSAY
         $title = $_POST['title'];
         $question = $_POST['question'];
-        $answer = "STUDENT_DEFINED"; #Essay questions are not graded
+        $answer = "STUDENT_DEFINED"; #Essay questions are not graded automatically
         $owner = $_SESSION['username'];
         # Get the id of the category by it's name
         $cat_id = CreateQuestionDbCommunicator::getCategoryId($_POST['category']);
