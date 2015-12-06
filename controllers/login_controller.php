@@ -28,6 +28,7 @@ class LoginController {
     public function logout() {
         unset($_SESSION['username']);
         unset($_SESSION['role']);
+        unset($_SESSION);
         session_destroy();
         # Redirect to homepage on logout
         echo "<script> window.location.assign('index.php') </script>";

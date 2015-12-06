@@ -1,19 +1,25 @@
-<div class="category-pos">
+<?php
+	if (isset($_GET['desc'])) {
+		$current = $_GET['desc'];
+		$_SESSION['category_pos_name'] .= $current . " >> ";
+	}
 
-</div>
+	echo "<div class='category-navigation'>";
+	echo $_SESSION['category_pos_name'];
+	echo "</div>";
 
-<div class="container centered-box">
-	<h2> Categories </h2>
-	<?php
+	echo "<div class='container centered-box'>";
+
+	echo "<h2> Categories </h2>";
 		if ($childrenList) {
 			foreach($childrenList as $array => $keys) {
 				foreach ($keys as $key => $value) {
 					if ($key == 'location') {
 						$location = $value;
 					} else {
-						echo "<a href='?controller=category&action=view&location=" . $location . "'>" . $value . "</a> <br/>";
+						echo "<a href='?controller=category&action=view&location=". $location . "&desc=" . $value . "'>" . $value . "</a><br/>";
 					}			
-				}
+				}		
 			}
 		} else {
 			echo "There are no more categories to display.";
