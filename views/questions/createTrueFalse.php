@@ -1,3 +1,4 @@
+<div id="question_status"> </div>
 <div class="container col-md-6 col-sm-offset-3">		
 	<form action="?controller=questions&action=createTrueFalse" method="post">
 		<h2> Create True/False Question </h2>
@@ -43,7 +44,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<input class="btn btn-default col-sm-4 col-sm-offset-4" type="submit" value="Create">
+			<input class="btn btn-default col-sm-4 col-sm-offset-4" type="submit" value="Create" onclick="showCreateQuestionSuccess()">
 		</div>
 	</form>	
 </div>

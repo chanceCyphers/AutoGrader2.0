@@ -15,6 +15,10 @@
     text-align: justify;
 }
 
+.centered-box a {
+    text-align: center;
+}
+
 .navbar-default {
     background-color: #006633;
 }
@@ -31,7 +35,7 @@
     background-color: #00AB55;
 }
 
-h2 h3 {
+h2, h3 {
     text-align: center;
     color: #006633;
 }

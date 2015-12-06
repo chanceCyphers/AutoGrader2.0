@@ -1,5 +1,5 @@
 <div class="container centered-box text-centered">
-	<a href="?controller=questions&action=create">Create a New Question</a>
+	<a class="btn btn-default" href="?controller=questions&action=create">Create a New Question</a>
 	<h3>Last 5 Questions Created By You:</h3><br/>
 </div> 
 <div class="container table-responsive">
