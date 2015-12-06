@@ -59,7 +59,7 @@ class QuestionsController {
         }
 
 		CreateQuestionDbCommunicator::createTrueFalseQuestion($type, $title, $question, $answer, $owner, $cat_id, $visible, $permitted);
-
+        
     }
 
     public function createShortAnswer() {
