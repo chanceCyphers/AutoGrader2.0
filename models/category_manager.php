@@ -2,42 +2,97 @@
 
 	class CategoryManager {
 
-		public static function viewTopLevel() {
+		// Returns list of all of the categories by their description and location, ordered by location
+		public static function getAllCategories() {
 			$db = Db::getInstance();
-			$topReg = "^[0-9]+$";
-			// Returns the list of the top level categories
-			$categoryQuery = $db->prepare('SELECT location, description FROM categories WHERE location REGEXP :topReg
-																		 ORDER BY location');
-			$categoryQuery->execute(array('topReg' => $topReg));
-
-			$topLevels = $categoryQuery->fetchAll(PDO::FETCH_ASSOC);
-
-			return $topLevels;
+			$categoryQuery = $db->prepare('SELECT location, description
+											 FROM categories
+										 ORDER BY location
+										');
+				$categoryQuery->execute();
+			$allCategories = $categoryQuery->fetchAll(PDO::FETCH_ASSOC);
+			return $allCategories;
 		}
 
-		// Return a list of only the categories under this category
-		public static function getCategoryChildren($categoryID) {
+		// Returns list of the top level categories in the category hierarchy
+		public static function getCategoryTopLevel() {
 			$db = Db::getInstance();
-			$childrenReg = "^" . $categoryID . ".[0-9]+$";
-			$childrenQuery = $db->prepare('SELECT location, description FROM categories WHERE location REGEXP :childrenReg
-																	   ORDER BY location');
-			$childrenQuery->execute(array('childrenReg' => $childrenReg));
+			// Regex that grabs all top-level categories using location
+			$regexForTopLevel = "^[0-9]+$";
+			$categoryQuery = $db->prepare('SELECT location, description 
+											 FROM categories 
+											WHERE location REGEXP :regex
+										 ORDER BY location'
+										 );
+				$categoryQuery->execute(array('regex' => $regexForTopLevel));
+			$allTopCategories = $categoryQuery->fetchAll(PDO::FETCH_ASSOC);
+			return $allTopCategories;
+		}
 
-			$childrenList = $childrenQuery->fetchAll(PDO::FETCH_ASSOC);
-
+		// Return a list of the children of a single category in the hierarchy
+		public static function getCategoryChildren($categoryLOC) {
+			$db = Db::getInstance();
+			// Regex that grabs all of the children of one category using location
+			$regexForChildren = "^" . $categoryLOC . ".[0-9]+$";
+			$categoryQuery = $db->prepare('SELECT location, description 
+											 FROM categories 
+											WHERE location REGEXP :regex
+										 ORDER BY location'
+										 );
+				$categoryQuery->execute(array('regex' => $regexForChildren));
+			$childrenList = $categoryQuery->fetchAll(PDO::FETCH_ASSOC);
 			return $childrenList;
+		}
+
+		public static function getCategoryIDByLocation($categoryLOC) {
+			$db = Db::getInstance();
+			$categoryIDQuery = $db->prepare('SELECT cat_id
+											   FROM categories
+											  WHERE location = :categoryLOC
+										   ');
+				$categoryIDQuery->execute(array('categoryLOC' => $categoryLOC));
+			$categoryID = $categoryIDQuery->fetch(PDO::FETCH_ASSOC);
+			return $categoryID;
 
 		}
 
-		public static function create() {
-
-
+		// Creates the location id for a new category to be inserted under an existing category
+		public static function getNewLocation($locationParent) {
+			$rowsOfChildren = CategoryManager::getCategoryChildren($locationParent);
+			$numberOfChildren = count($rowsOfChildren);			
+			$numberOfChildren++;
+			$newLocation = $locationParent . "." . $numberOfChildren;
+			return $newLocation;
 		}
 
+		// Allows for the creation of a category under another category in the hierarcy
+		public static function create($name, $locationParent) {
+			$db = Db::getInstance();
+
+			$location = CategoryManager::getNewLocation($locationParent);
+			$description = $name;
+			$owner = $_SESSION['username'];
+			$date = date('Y-m-d H:i:s');
+
+			$createQuery = $db->prepare('INSERT INTO categories (location, description, owner, datetime)
+											  VALUES (:location, :description, :owner, :date)
+										');
+				$createQuery->execute(array('location' => $location, 'description' => $description,
+											'owner' => $owner, 'date' => $date));
+		}
+
+		// Deletes a category from the hierarchy/tree of categories
 		public static function delete() {
 
 
 		}
+
+		// When a category is deleted, this function reassigns the questions and tests
+		// associated with it to its parent category
+		public static function reassign() {
+
+		}
+
 
 
 
@@ -59,7 +114,7 @@
 
 			$categoryQuery = $db->prepare('SELECT location, description FROM categories ORDER BY location');
 			$categoryQuery->execute();
-
+;
 			$categoryList = $categoryQuery->fetchAll(PDO::FETCH_ASSOC);
 
 			return $categoryList;

@@ -19,7 +19,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Auto-Grader</title>
+        <title>Ikeji-Lab</title>
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="styles/site.css">
     </head>

@@ -1,34 +1,42 @@
 <?php
 
-Class CategoryController {
+class CategoryController {
 
-	# View all of the categories in a hierarchy - serves as landing page
-	function index() {
-		$topLevels = CategoryManager::viewTopLevel();		
+	function index() {	
+		// At the initial landing page, show the top level categories only	
+		$categoryList = CategoryManager::getCategoryTopLevel();
 		require_once("views/categories/index.php");
 	}
 
-	function view() {
-		$location = $_GET['location'];
-		$childrenList = CategoryManager::getCategoryChildren($location);
-		require_once("views/categories/categories.php");
+	// Shows the category and all of the questions and categories in the category
+	function load() {
+		require_once("models/question_manager.php");
+		$categoryLOC = $_GET['loc'];
+		$childrenList = CategoryManager::getCategoryChildren($categoryLOC);
+		$categoryIDResult = CategoryManager::getCategoryIDByLocation($categoryLOC);		
+		$categoryID = $categoryIDResult['cat_id'];
+		$questionsList = QuestionManager::getQuestionsUnderCategory($categoryID);
+		require_once("views/categories/category_loader.php");		
 	}
 
-	# Create a new category
+	// Creates a new category
 	function create() {
-		require_once("views/categories/create.php");
-		if(isset($_POST)) {
-				
+		if (isset($_POST['new_category'])) {
+			$categoryName = $_POST['new_category'];
+			$categoryLoc = $_POST['location'];
+
+			// If categories must be unique, enter check for it here
+			CategoryManager::create($categoryName, $categoryLoc);
+		} else {
+
 		}
+		
 	}
 
-	# Delete a category
 	function delete() {
 
-
 	}
 
-	# Change the location of a category in the hierarchy
 	function change() {
 
 	}

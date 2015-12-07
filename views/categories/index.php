@@ -1,20 +1,12 @@
 <div class="container centered-box">
 	<h2> Categories </h2>
 	<?php
-		$_SESSION['category_pos_name'] = "";
-		$_SESSION['category_pos'] = "";
-		// Retrive list of categories by their location and their description
-		$location	= "";
-		foreach($topLevels as $array => $keys) {
-			foreach ($keys as $key => $value) {
-				if ($key == 'location') {
-					$location = $value;
-				} else {					
-					echo "<a href='?controller=category&action=view&location=". $location . "&desc=" . $value . "'>" . $value . "</a><br/>";
-				}			
-			}
-		}
+	// String for holding the HTML for output
+	$html_out = "<a class='col-sm-4 btn btn-success' href='?controller=category&action=load&loc=";
+	foreach ($categoryList as $array => $key) {
+		echo $html_out . $key['location'] . " '> " . $key['description'] . "</a><br/>";
+	}
 	?>
-
+</div>
 
 

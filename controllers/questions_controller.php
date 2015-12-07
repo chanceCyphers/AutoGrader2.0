@@ -3,17 +3,17 @@
 class QuestionsController {
     
     public function index() {
-        require_once('models/view_questions_db_communicator.php');
-		$questionsUser = ViewQuestionsDbCommunicator::getAllQuestionsByUser();
-		$questionsPerm = ViewQuestionsDbCommunicator::getQuestionsByPermissions();
+        require_once('models/question_manager.php');
+		$questionsUser = QuestionManager::getAllQuestionsByUser();
+		$questionsPerm = QuestionManager::getQuestionsByPermissions();
         require_once('views/questions/index.php');
     }
     
     public function viewQuestion() {
-        require_once('models/view_questions_db_communicator.php');
+        require_once('models/question_manager.php');
     	$questionId = $_GET['questionId'];
 		
-    	$question = ViewQuestionsDbCommunicator::getQuestion($questionId);
+    	$question = QuestionManager::getQuestion($questionId);
     	
     	require_once('views/questions/viewQuestion.php');
     }
