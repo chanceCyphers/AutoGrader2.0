@@ -3,17 +3,17 @@
 class QuestionsController {
     
     public function index() {
-        require_once('models/view_questions_db_communicator.php');
-		$questionsUser = ViewQuestionsDbCommunicator::getAllQuestionsByUser();
-		$questionsPerm = ViewQuestionsDbCommunicator::getQuestionsByPermissions();
+        require_once('models/question_manager.php');
+		$questionsUser = QuestionManager::getAllQuestionsByUser();
+		$questionsPerm = QuestionManager::getQuestionsByPermissions();
         require_once('views/questions/index.php');
     }
     
     public function viewQuestion() {
-        require_once('models/view_questions_db_communicator.php');
+        require_once('models/question_manager.php');
     	$questionId = $_GET['questionId'];
 		
-    	$question = ViewQuestionsDbCommunicator::getQuestion($questionId);
+    	$question = QuestionManager::getQuestion($questionId);
     	
     	require_once('views/questions/viewQuestion.php');
     }
@@ -59,8 +59,7 @@ class QuestionsController {
         }
 
 		CreateQuestionDbCommunicator::createTrueFalseQuestion($type, $title, $question, $answer, $owner, $cat_id, $visible, $permitted);
-
-		require_once('views/questions/createSuccess.php');
+        
     }
 
     public function createShortAnswer() {
@@ -83,8 +82,7 @@ class QuestionsController {
 
         CreateQuestionDbCommunicator::create_shortans($type, $title, $question, $answer, $owner, $cat_id, 
                                                       $visible, $permitted);
-
-        require_once('views/questions/createSuccess.php');
+        require_once("views/questions/create_success.php");
     }
 
     public function createMultipleChoice() {
@@ -109,9 +107,8 @@ class QuestionsController {
         }
         CreateQuestionDbCommunicator::createMultipleChoiceQuestion($type, $title, $question, $answer, $choice_1, $choice_2, 
                                                                    $choice_3, $owner, $cat_id, $visible, $permitted);
+        require_once("views/questions/create_success.php");
 
-        // require_once('views/questions/createSuccess.php');
-        require_once('views/questions/createSuccess.php');
     }
 
     public function createEssay() {
@@ -133,8 +130,8 @@ class QuestionsController {
         }
 
         CreateQuestionDbCommunicator::create_essay($type, $title, $question, $answer, $owner, $cat_id, $visible, $permitted);
-
-        require_once('views/questions/createSuccess.php');        
+        require_once("views/questions/create_success.php");
+     
     }
 
     ### NOT IMPLEMENTED ###
